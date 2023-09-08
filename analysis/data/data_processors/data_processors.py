@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from analysis.data.datatypes.data import Data
+from analysis.data.data_types.data_types import Data
 
 
 class DataProcessor(ABC):

@@ -1,7 +1,7 @@
-from analysis.data.data_processors.scatter_data.scatter_data_processor import ScatterDataProcessor
-from analysis.data.data_types.scatter_data.generic_scatter import GenericScatterData
+from analysis.data.data_processors.scatter_data_processor import ScatterDataProcessor
+from analysis.data.data_types.generic_scatter import GenericScatterData
 from analysis.devices.workers.device_worker import DeviceWorkerCore
-from analysis import plotter as plt
+import analysis.plotters as plt
 
 
 class Generic(DeviceWorkerCore):
