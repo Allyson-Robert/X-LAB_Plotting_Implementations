@@ -33,18 +33,19 @@ class ScatterDataPlotter(Plotter):
         )
         self.titles_set = True
 
-    def draw_plot(self, presentation: bool, time_evolved: bool, *args, **kwargs):
+    def draw_plot(self, options: dict, *args, **kwargs):
         line = None
-        if presentation or time_evolved:
+        if options["presentation"] or options["time_evolved"]:
             line = dict()
-        if presentation:
+
+        if options["presentation"]:
             line["width"] = 5
 
         # FEATURE REQUEST: Draw plots with errors
         dumb_counter = 0
         for lbl in self.data_processors:
             scatter = self.data_processors[lbl]
-            if time_evolved:
+            if options["time_evolved"]:
                 colorscale = plotly.colors.get_colorscale("Magenta")
                 line["color"] = get_colour(colorscale, dumb_counter/len(self.data_processors))
                 dumb_counter += 1
@@ -56,6 +57,7 @@ class ScatterDataPlotter(Plotter):
                 name=scatter.get_data('label'),
                 line=line
             ))
+
         # Grab axis titles from last IVData if they have not yet been externally set
         if not self.titles_set:
             self.set_axes_titles(
