@@ -6,20 +6,20 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>324</width>
-    <height>155</height>
+    <width>369</width>
+    <height>195</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>321</width>
-     <height>151</height>
+     <width>371</width>
+     <height>191</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">
@@ -30,6 +30,16 @@
       </property>
       <property name="alias" stdset="0">
        <string>normalise</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QCheckBox" name="genericTimeEvolvedCheckBox">
+      <property name="text">
+       <string>Time Evolved</string>
+      </property>
+      <property name="alias" stdset="0">
+       <string>time_evolved</string>
       </property>
      </widget>
     </item>
