@@ -28,16 +28,16 @@ class Generic(DeviceWorkerCore):
         """
         Show the scatter plot
         """
-        plotter = plt.ScatterDataPlotter(title, "independent", "dependent")
+        plotter = ScatterDataPlotter(title, "independent", "dependent")
         plotter.ready_plot(self.data_processors, self.legend_title)
         plotter.set_axes_titles(self.x_title, self.y_title)
-        plotter.draw_plot()
+        plotter.draw_plot(self.options)
 
     def plot_distribution(self, title, legend):
         """
         Show a histogram
         """
-        plotter = plt.HistogramPlotter(title, "dependent")
+        plotter = HistogramPlotter(title, "dependent")
         plotter.ready_plot(self.data_processors, self.legend_title)
         plotter.set_axes_titles(self.y_title)
         plotter.draw_plot()
