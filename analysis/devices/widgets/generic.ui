@@ -80,22 +80,7 @@
      </layout>
     </item>
     <item>
-     <layout class="QHBoxLayout" name="horizontalLayout_3">
-      <item>
-       <widget class="QLabel" name="lTitleLabel">
-        <property name="text">
-         <string>Legend Title</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLineEdit" name="lTitleLineEdit">
-        <property name="alias" stdset="0">
-         <string>legend_title</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
+     <layout class="QHBoxLayout" name="horizontalLayout_3"/>
     </item>
    </layout>
   </widget>
