@@ -7,9 +7,9 @@ from analysis.plotters.histogram_plotter import HistogramPlotter
 
 class Generic(DeviceWorkerCore):
 
-    def __init__(self, device, fileset, plot_type, legend, options):
+    def __init__(self, device, fileset, plot_type, options):
         # super() delegates method calls to a parent
-        super().__init__(device, fileset, plot_type, legend)
+        super().__init__(device, fileset, plot_type)
 
         self.x_title = None
         self.y_title = None
@@ -25,7 +25,7 @@ class Generic(DeviceWorkerCore):
         self.y_title = y_title
         self.legend_title = legend_title
 
-    def plot(self, title, legend):
+    def plot(self, title):
         """
         Show the scatter plot
         """
@@ -34,7 +34,7 @@ class Generic(DeviceWorkerCore):
         plotter.set_axes_titles(self.x_title, self.y_title)
         plotter.draw_plot(self.options)
 
-    def plot_distribution(self, title, legend):
+    def plot_distribution(self, title):
         """
         Show a histogram
         """

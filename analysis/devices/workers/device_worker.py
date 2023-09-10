@@ -33,13 +33,12 @@ class DeviceWorkerCore(DeviceWorker):
     finished = QtCore.pyqtSignal()
     progress = QtCore.pyqtSignal(int)
 
-    def __init__(self, device, fileset, plot_type, legend):
+    def __init__(self, device, fileset, plot_type):
         super().__init__()
 
         self.device = device
         self.fileset = fileset
         self.plot_type = plot_type
-        self.legend = legend
 
         self.data_processors = None
 
@@ -85,5 +84,5 @@ class DeviceWorkerCore(DeviceWorker):
 
         # Grab the correct plot and execute it
         plot_type = getattr(self, self.plot_type)
-        plot_type(title=self.fileset.get_name(), legend=self.legend)
+        plot_type(title=self.fileset.get_name())
         self.finished.emit()
