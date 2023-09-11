@@ -16,15 +16,27 @@ class ScatterDataPlotter(Plotter):
 
         self.data_processors = None
 
+        self.line = None
+        self.colorscale = plotly.colors.get_colorscale("Viridis")
         self.titles_set = False
 
-    def ready_plot(self, data_processors: dict[str, DataProcessor], legend_title: str):
+    def ready_plot(self, data_processors: dict[str, DataProcessor], options: dict):
         self.fig = scatter_prepper(self.fig)
         self.fig.update_layout(
             title={'text': self.title},
-            legend_title=legend_title,
+            legend_title=options["legend_title"],
         )
         self.data_processors = data_processors
+
+        # Define line properties
+        if options["presentation"] or options["time_evolved"]:
+            self.line = dict()
+
+        if options["presentation"]:
+            self.line["width"] = 5
+
+        if options["time_evolved"]:
+            self.colorscale = plotly.colors.get_colorscale("Magenta")
 
     def set_axes_titles(self, x_title, y_title):
         self.fig.update_layout(
@@ -33,29 +45,21 @@ class ScatterDataPlotter(Plotter):
         )
         self.titles_set = True
 
-    def draw_plot(self, options: dict, *args, **kwargs):
-        line = None
-        if options["presentation"] or options["time_evolved"]:
-            line = dict()
-
-        if options["presentation"]:
-            line["width"] = 5
-
+    def draw_plot(self, *args, **kwargs):
         # FEATURE REQUEST: Draw plots with errors
-        dumb_counter = 0
-        for lbl in self.data_processors:
-            scatter = self.data_processors[lbl]
-            if options["time_evolved"]:
-                colorscale = plotly.colors.get_colorscale("Magenta")
-                line["color"] = get_colour(colorscale, dumb_counter/len(self.data_processors))
-                dumb_counter += 1
+        for index, lbl in enumerate(self.data_processors):
+            # Set line colour for current line
+            if self.line is not None:
+                self.line["color"] = get_colour(self.colorscale, index/len(self.data_processors))
 
+            # Grab and plot data
+            scatter = self.data_processors[lbl]
             self.fig.add_trace(go.Scatter(
                 x=scatter.get_data(self.x_observable, *args, **kwargs),
                 y=scatter.get_data(self.y_observable, *args, **kwargs),
                 mode='lines',
                 name=scatter.get_data('label'),
-                line=line
+                line=self.line
             ))
 
         # Grab axis titles from last IVData if they have not yet been externally set

@@ -4,7 +4,7 @@ from analysis.data.data_processors.data_processors import DataProcessor
 
 class Plotter(ABC):
     @abstractmethod
-    def ready_plot(self, processors: DataProcessor, legend_title: str):
+    def ready_plot(self, processors: DataProcessor, options: dict):
         pass
 
     @abstractmethod

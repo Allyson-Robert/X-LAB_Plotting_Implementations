@@ -14,11 +14,11 @@ class HistogramPlotter(Plotter):
 
         self.data_processors = None
 
-    def ready_plot(self, data_processors: dict[str, DataProcessor], legend_title: str):
+    def ready_plot(self, data_processors: dict[str, DataProcessor], options: dict):
         self.fig = scatter_prepper(self.fig)
         self.fig.update_layout(
             title={'text': self.title},
-            legend_title=legend_title,
+            legend_title=options["legend_title"],
         )
         self.data_processors = data_processors
 
