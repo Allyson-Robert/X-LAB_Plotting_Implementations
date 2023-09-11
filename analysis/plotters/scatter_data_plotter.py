@@ -2,7 +2,7 @@ from analysis.data.data_processors.data_processors import DataProcessor
 from utils.plot_preppers.scatter_prep import scatter_prepper
 from utils.plot_preppers.export_to_svg import get_svg_config
 from analysis.plotters.plotter import Plotter
-from utils.get_colour import get_colour
+from analysis.utils.get_colour import get_colour
 import plotly.graph_objects as go
 import plotly.colors
 
