@@ -18,8 +18,7 @@ class DeviceWorker(ABC, QtCore.QObject, metaclass=WorkerMeta):
     def __init_subclass__(cls):
         # Ensure that all abstract methods and potential plotters are decorated
         methods_to_decorate = [method_name for method_name in DeviceWorker.__abstractmethods__ if method_name in cls.__dict__]
-        methods_to_decorate.append([method_name for method_name in cls.__dict__ if "plot" in method_name])
-        print(methods_to_decorate)
+        methods_to_decorate.extend([method_name for method_name in cls.__dict__ if "plot" in method_name])
         decorate_abc_with_debug_logging(cls, methods_to_decorate)
 
     @abstractmethod
