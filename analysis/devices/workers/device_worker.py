@@ -11,6 +11,15 @@ class WorkerMeta(type(ABC), type(QtCore.QObject)):
 
 
 class DeviceWorker(ABC, QtCore.QObject, metaclass=WorkerMeta):
+    def __init_subclass__(cls):
+        for function_to_wrap in DeviceWorker.__abstractmethods__:
+            if function_to_wrap in cls.__dict__:
+                setattr(
+                    cls,
+                    function_to_wrap,
+                    with_logging(cls.__dict__[function_to_wrap], log_level=logging.DEBUG)
+                )
+
     @abstractmethod
     def set_data(self,  fileset: Fileset):
         pass
