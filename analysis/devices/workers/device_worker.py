@@ -1,9 +1,7 @@
 from abc import ABC, ABCMeta, abstractmethod
 from fileset.fileset import Fileset
 from PyQt5 import QtCore
-import logging
-from utils.logging import with_logging, decorate_abc_with_debug_logging
-from utils.logging import MyLogging
+from utils.logging import decorate_abc_with_debug_logging, MyLogging, DEBUG_WORKER
 
 
 # This custom metaclass is needed to make ABC and QObject multiple inheritance possible
@@ -19,7 +17,7 @@ class DeviceWorker(ABC, QtCore.QObject, metaclass=WorkerMeta):
         # Ensure that all abstract methods and potential plotters are decorated
         methods_to_decorate = [method_name for method_name in DeviceWorker.__abstractmethods__ if method_name in cls.__dict__]
         methods_to_decorate.extend([method_name for method_name in cls.__dict__ if "plot" in method_name])
-        decorate_abc_with_debug_logging(cls, methods_to_decorate)
+        decorate_abc_with_debug_logging(cls, methods_to_decorate, log_level=DEBUG_WORKER)
 
     @abstractmethod
     def set_data(self,  fileset: Fileset):
