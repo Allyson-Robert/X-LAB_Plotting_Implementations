@@ -6,12 +6,15 @@ from utils.logging import with_logging
 from utils.logging import MyLogging
 
 
-# This custom metaclass is needed to make the Abstract Base Class work nicely with a QObject, which the workers should be
+# This custom metaclass is needed to make ABC and QObject multiple inheritance possible
+#   Note: QObject provides default thread management tools
 class WorkerMeta(type(ABC), type(QtCore.QObject)):
     pass
 
 
-class DeviceWorker(ABC, QtCore.QObject):
+# Abstract baseclass to define worker objects and the required functions
+class DeviceWorker(ABC, QtCore.QObject, metaclass=WorkerMeta):
+    # This automatically wraps all of the abstract methods when implemented
     def __init_subclass__(cls):
         for function_to_wrap in DeviceWorker.__abstractmethods__:
             if function_to_wrap in cls.__dict__:
