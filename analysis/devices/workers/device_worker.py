@@ -2,7 +2,7 @@ from abc import ABC, ABCMeta, abstractmethod
 from fileset.fileset import Fileset
 from PyQt5 import QtCore
 import logging
-from utils.logging import with_logging
+from utils.logging import with_logging, decorate_abc_with_debug_logging
 from utils.logging import MyLogging
 
 
@@ -16,19 +16,11 @@ class WorkerMeta(type(ABC), type(QtCore.QObject)):
 class DeviceWorker(ABC, QtCore.QObject, metaclass=WorkerMeta):
     # This automatically wraps all of the abstract methods when implemented
     def __init_subclass__(cls):
-        for function_to_wrap in DeviceWorker.__abstractmethods__:
-            if function_to_wrap in cls.__dict__:
-                setattr(
-                    cls,
-                    function_to_wrap,
-                    with_logging(cls.__dict__[function_to_wrap], log_level=logging.DEBUG)
-                )
-        for plotters in [function_name for function_name in cls.__dict__ if "plot" in function_name]:
-            setattr(
-                cls,
-                plotters,
-                with_logging(cls.__dict__[plotters], log_level=logging.DEBUG)
-            )
+        # Ensure that all abstract methods and potential plotters are decorated
+        methods_to_decorate = [method_name for method_name in DeviceWorker.__abstractmethods__ if method_name in cls.__dict__]
+        methods_to_decorate.append([method_name for method_name in cls.__dict__ if "plot" in method_name])
+        print(methods_to_decorate)
+        decorate_abc_with_debug_logging(cls, methods_to_decorate)
 
     @abstractmethod
     def set_data(self,  fileset: Fileset):

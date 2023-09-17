@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 from analysis.data.data_types.data_types import Data
-from utils.logging import decorate_class_with_debug_logging
+from utils.logging import decorate_abc_with_debug_logging
 
 
 class DataProcessor(ABC):
@@ -8,7 +8,7 @@ class DataProcessor(ABC):
     # CHECK: This leads to a lot of messages at the DEBUG level, maybe I can define custom levels between DEBUG and INFO to manage the depth
     def __init_subclass__(cls):
         methods_to_decorate = [method_name for method_name in DataProcessor.__abstractmethods__ if method_name in cls.__dict__]
-        decorate_class_with_debug_logging(cls, methods_to_decorate)
+        decorate_abc_with_debug_logging(cls, methods_to_decorate)
     @abstractmethod
     def get_data(self, observable: str):
         pass
