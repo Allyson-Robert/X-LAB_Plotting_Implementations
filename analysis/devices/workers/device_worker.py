@@ -59,10 +59,6 @@ class DeviceWorkerCore(DeviceWorker, MyLogging):
         self.processor_type = None
         self.data_type = None
 
-    @abstractmethod
-    def set_options(self, *args, **kwargs):
-        pass
-
     def set_data_type(self, data_type):
         self.data_type = data_type
 
