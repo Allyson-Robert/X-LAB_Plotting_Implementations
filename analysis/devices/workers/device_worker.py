@@ -1,6 +1,8 @@
 from abc import ABC, ABCMeta, abstractmethod
 from fileset.fileset import Fileset
 from PyQt5 import QtCore
+import logging
+from utils.logging import with_logging
 from utils.logging import MyLogging
 
 
