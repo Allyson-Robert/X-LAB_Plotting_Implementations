@@ -1,6 +1,7 @@
 from abc import ABC, ABCMeta, abstractmethod
 from fileset.fileset import Fileset
 from PyQt5 import QtCore
+from utils.logging import MyLogging
 
 
 class WorkerMeta(type(ABC), type(QtCore.QObject)):
