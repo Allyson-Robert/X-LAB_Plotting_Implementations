@@ -6,11 +6,12 @@ from utils.logging import with_logging
 from utils.logging import MyLogging
 
 
+# This custom metaclass is needed to make the Abstract Base Class work nicely with a QObject, which the workers should be
 class WorkerMeta(type(ABC), type(QtCore.QObject)):
     pass
 
 
-class DeviceWorker(ABC, QtCore.QObject, metaclass=WorkerMeta):
+class DeviceWorker(ABC, QtCore.QObject):
     def __init_subclass__(cls):
         for function_to_wrap in DeviceWorker.__abstractmethods__:
             if function_to_wrap in cls.__dict__:
