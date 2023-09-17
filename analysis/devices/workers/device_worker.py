@@ -23,6 +23,12 @@ class DeviceWorker(ABC, QtCore.QObject, metaclass=WorkerMeta):
                     function_to_wrap,
                     with_logging(cls.__dict__[function_to_wrap], log_level=logging.DEBUG)
                 )
+        for plotters in [function_name for function_name in cls.__dict__ if "plot" in function_name]:
+            setattr(
+                cls,
+                plotters,
+                with_logging(cls.__dict__[plotters], log_level=logging.DEBUG)
+            )
 
     @abstractmethod
     def set_data(self,  fileset: Fileset):
