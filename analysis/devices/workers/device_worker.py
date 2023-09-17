@@ -45,6 +45,7 @@ class DeviceWorker(ABC, QtCore.QObject, metaclass=WorkerMeta):
         pass
 
 
+# Default implementation of the DeviceWorker that can provide default functionality, only set_options needs to be implemented
 class DeviceWorkerCore(DeviceWorker, MyLogging):
     finished = QtCore.pyqtSignal()
     progress = QtCore.pyqtSignal(int)
