@@ -29,7 +29,7 @@ class DeviceWorker(ABC, QtCore.QObject, metaclass=WorkerMeta):
         pass
 
 
-class DeviceWorkerCore(DeviceWorker):
+class DeviceWorkerCore(DeviceWorker, MyLogging):
     finished = QtCore.pyqtSignal()
     progress = QtCore.pyqtSignal(int)
 
