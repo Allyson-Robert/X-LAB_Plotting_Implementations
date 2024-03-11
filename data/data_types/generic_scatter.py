@@ -1,4 +1,4 @@
-from data.data_types.data_types import DataModel
+from analysis_example.data.data_types.data_types import DataModel
 from utils.file_readers.read_csv import read_csv
 
 
