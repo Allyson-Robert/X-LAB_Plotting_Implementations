@@ -1,7 +1,7 @@
 from abc import ABC, ABCMeta, abstractmethod
 from fileset.fileset import Fileset
 from PyQt5 import QtCore
-from utils.logging import decorate_abc_with_debug_logging, MyLogging, DEBUG_WORKER
+from utils.logging import decorate_abc_with_debug_logging, ConsoleLogging, DEBUG_WORKER
 
 
 # This custom metaclass is needed to make ABC and QObject multiple inheritance possible
@@ -41,7 +41,7 @@ class DeviceWorker(ABC, QtCore.QObject, metaclass=WorkerMeta):
 
 
 # Default implementation of the DeviceWorker that can provide default functionality, only set_options needs to be implemented
-class DeviceWorkerCore(DeviceWorker, MyLogging):
+class DeviceWorkerCore(DeviceWorker, ConsoleLogging):
     finished = QtCore.pyqtSignal()
     progress = QtCore.pyqtSignal(int)
 
