@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from analysis.data.data_types.data_types import Data
+from analysis.data.data_types.data_types import AbstractData
 from utils.logging import decorate_abc_with_debug_logging, DEBUG_DATA_PROCESSOR
 
 class DataProcessor(ABC):
@@ -23,7 +23,7 @@ class DataProcessor(ABC):
 
 class DataProcessorCore(DataProcessor):
 
-    def __init__(self, data: Data):
+    def __init__(self, data: AbstractData):
         self.data = data
         self._processing_functions = {}
         self.processed_data = {}

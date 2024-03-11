@@ -1,8 +1,8 @@
-from analysis.data.data_types.data_types import DataCore
+from analysis.data.data_types.data_types import DataModel
 from utils.file_readers.read_csv import read_csv
 
 
-class GenericScatterData(DataCore):
+class GenericScatterData(DataModel):
     def __init__(self, label):
         super().__init__()
         self.raw_data = {
