@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/X-LAB_Plotting_Manager_Analysis_Example.iml" filepath="$PROJECT_DIR$/.idea/X-LAB_Plotting_Manager_Analysis_Example.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/analysis_example.iml" filepath="$PROJECT_DIR$/.idea/analysis_example.iml" />
     </modules>
   </component>
 </project>
