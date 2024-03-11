@@ -1,5 +1,5 @@
-from analysis.data.data_processors.data_processors import DataProcessorCore
-from analysis.data.data_types.generic_scatter import GenericScatterData
+from data.data_processors.data_processors import DataProcessorCore
+from data.data_types.generic_scatter import GenericScatterData
 from utils.errors.errors import ObservableNotComputableError
 
 
