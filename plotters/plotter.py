@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from data.data_processors.data_processors import DataProcessor
+from analysis_example.data.data_processors.data_processors import DataProcessor
 from utils.logging import decorate_abc_with_debug_logging, DEBUG_PLOTTER
 
 class Plotter(ABC):
