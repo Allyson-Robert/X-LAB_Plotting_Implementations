@@ -19,7 +19,7 @@
      <x>0</x>
      <y>0</y>
      <width>371</width>
-     <height>151</height>
+     <height>190</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">
@@ -108,6 +108,13 @@
        </widget>
       </item>
      </layout>
+    </item>
+    <item>
+     <widget class="QLineEdit" name="lTitleLineEdit">
+      <property name="alias" stdset="0">
+       <string>legend_title</string>
+      </property>
+     </widget>
     </item>
    </layout>
   </widget>
