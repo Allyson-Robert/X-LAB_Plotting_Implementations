@@ -1,5 +1,5 @@
 from abc import ABC, ABCMeta, abstractmethod
-from fileset.fileset import Fileset
+from dataspec_manager.dataspec import DataSpec
 from PyQt5 import QtCore
 from utils.logging import decorate_abc_with_debug_logging, ConsoleLogging, DEBUG_WORKER
 
@@ -20,7 +20,7 @@ class DeviceWorker(ABC, QtCore.QObject, metaclass=WorkerMeta):
         decorate_abc_with_debug_logging(cls, methods_to_decorate, log_level=DEBUG_WORKER)
 
     @abstractmethod
-    def set_data(self,  fileset: Fileset):
+    def set_data(self, fileset: DataSpec):
         pass
 
     @abstractmethod
@@ -63,7 +63,7 @@ class DeviceWorkerCore(DeviceWorker, ConsoleLogging):
     def set_processor_type(self, processor_type):
         self.processor_type = processor_type
 
-    def set_data(self, fileset: Fileset):
+    def set_data(self, fileset: DataSpec):
         # CHECK: Check that data and processor types have been set
         # Initialise an empty dict and get the required filepaths
         self.data_processors = {}
