@@ -1,7 +1,7 @@
-from analysis_example.data.data_processors.data_processors import DataProcessor
+from analysis.data.data_processors.data_processors import DataProcessor
 from utils.plot_preppers.scatter_prep import scatter_prepper
 from utils.plot_preppers.export_to_svg import get_svg_config
-from analysis_example.plotters.plotter import Plotter
+from analysis.plotters.plotter import Plotter
 import plotly.graph_objects as go
 
 

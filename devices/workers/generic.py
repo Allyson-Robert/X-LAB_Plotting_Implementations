@@ -1,8 +1,8 @@
-from analysis_example.data.data_processors.scatter_data_processor import ScatterDataProcessor
-from analysis_example.data.data_types.generic_scatter import GenericScatterData
-from analysis_example.devices.workers.device_worker import DeviceWorkerCore
-from analysis_example.plotters.scatter_data_plotter import ScatterDataPlotter
-from analysis_example.plotters.histogram_plotter import HistogramPlotter
+from analysis.data.data_processors.scatter_data_processor import ScatterDataProcessor
+from analysis.data.data_types.generic_scatter import GenericScatterData
+from analysis.devices.workers.device_worker import DeviceWorkerCore
+from analysis.plotters.scatter_data_plotter import ScatterDataPlotter
+from analysis.plotters.histogram_plotter import HistogramPlotter
 
 
 class Generic(DeviceWorkerCore):
