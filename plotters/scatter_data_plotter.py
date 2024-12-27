@@ -1,6 +1,7 @@
 from analysis.data.data_processors.data_processors import DataProcessor
 from utils.plot_preppers.scatter_prep import scatter_prepper
 from utils.plot_preppers.export_to_svg import get_svg_config
+from analysis.plotters.plotter_options import PlotterOptions
 from analysis.plotters.plotter import Plotter
 from analysis.utils.get_colour import get_colour
 import plotly.graph_objects as go
@@ -8,7 +9,7 @@ import plotly.colors
 
 
 class ScatterDataPlotter(Plotter):
-    def __init__(self, title, x_observable: str, y_observable: str):
+    def __init__(self, title, x_observable: str, y_observable: str, options: PlotterOptions):
         self.title = title
         self.fig = go.Figure()
         self.x_observable = x_observable
@@ -19,6 +20,14 @@ class ScatterDataPlotter(Plotter):
         self.line = None
         self.colorscale = plotly.colors.get_colorscale("Viridis")
         self.titles_set = False
+        expected_options = []
+        for option in expected_options:
+            try:
+                options.get_option(label = option)
+            except:
+                raise ValueError("Invalid Options Object")
+
+        self.options = options
 
     def ready_plot(self, data_processors: dict[str, DataProcessor], options: dict):
         self.fig = scatter_prepper(self.fig)
