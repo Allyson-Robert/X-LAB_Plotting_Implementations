@@ -1,6 +1,7 @@
 class PlotterOptions:
     def __init__(self):
         self.options = {}
+        self.handlers = {}
 
     def add_option(self, label: str, value: Any) -> bool:
         self.options[label] = value
@@ -9,6 +10,14 @@ class PlotterOptions:
     def get_option(self, label: str) -> Any:
         # Let the method raise an error if the key does not exist
         return self.options[label]
+
+    def is_instance_valid(self, options_array):
+        try:
+            for option in options_array:
+                self.get_option(label = option)
+        except:
+            raise ValueError("Invalid Options Object")
+        return True
 
     def add_handler(self, label: str, handler: callable) -> bool:
         """
