@@ -3,11 +3,11 @@ class PlotterOptions:
         self.options = {}
         self.handlers = {}
 
-    def add_option(self, label: str, value: Any) -> bool:
+    def add_option(self, label: str, value) -> bool:
         self.options[label] = value
         return True
 
-    def get_option(self, label: str) -> Any:
+    def get_option(self, label: str):
         # Let the method raise an error if the key does not exist
         return self.options[label]
 
