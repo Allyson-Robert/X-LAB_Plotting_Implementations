@@ -9,7 +9,7 @@ class Plotter(ABC):
         decorate_abc_with_debug_logging(cls, methods_to_decorate, log_level=DEBUG_PLOTTER)
 
     @abstractmethod
-    def ready_plot(self, processors: DataProcessor, options: dict):
+    def ready_plot(self, processors: DataProcessor):
         pass
 
     @abstractmethod

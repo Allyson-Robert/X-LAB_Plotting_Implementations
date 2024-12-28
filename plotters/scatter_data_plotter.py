@@ -27,13 +27,16 @@ class ScatterDataPlotter(Plotter):
             except:
                 raise ValueError("Invalid Options Object")
 
-        self.options = options
+        expected_options = ["x_title", "y_title", "legend_title", "presentation", "time_evolved"]
+        if options.is_instance_valid(expected_options):
+            self.options = options
+        options.add_option(label="colourscale", value=plotly.colors.get_colorscale("Viridis"))
 
-    def ready_plot(self, data_processors: dict[str, DataProcessor], options: dict):
+    def ready_plot(self, data_processors: dict[str, DataProcessor]):
         self.fig = scatter_prepper(self.fig)
         self.fig.update_layout(
             title={'text': self.title},
-            legend_title=options["legend_title"],
+            legend_title=self.options.get_option("legend_title"),
         )
         self.data_processors = data_processors
 

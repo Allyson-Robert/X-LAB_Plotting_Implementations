@@ -24,10 +24,6 @@ class DeviceWorker(ABC, QtCore.QObject, metaclass=WorkerMeta):
         pass
 
     @abstractmethod
-    def set_options(self,  *args, **kwargs):
-        pass
-
-    @abstractmethod
     def run(self):
         pass
 
@@ -86,9 +82,6 @@ class DeviceWorkerCore(DeviceWorker, ConsoleLogging):
     def run(self):
         # Set the data
         self.set_data(self.fileset)
-
-        # Pass the options
-        self.set_options(**self.options)
 
         # Grab the correct plot and execute it
         plot_type = getattr(self, self.plot_type)

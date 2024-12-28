@@ -1,12 +1,13 @@
 from analysis.data.data_processors.data_processors import DataProcessor
 from utils.plot_preppers.scatter_prep import scatter_prepper
 from utils.plot_preppers.export_to_svg import get_svg_config
+from analysis.plotters.plotter_options import PlotterOptions
 from analysis.plotters.plotter import Plotter
 import plotly.graph_objects as go
 
 
 class HistogramPlotter(Plotter):
-    def __init__(self, title, observable: str):
+    def __init__(self, title, observable: str, options: PlotterOptions):
         self.titles_set = None
         self.title = title
         self.fig = go.Figure()
@@ -15,10 +16,16 @@ class HistogramPlotter(Plotter):
         self.data_processors = None
 
     def ready_plot(self, data_processors: dict[str, DataProcessor], options: dict):
+        # This is very similar to ScatterPlotter
+        expected_options = ["y_title", "legend_title", "presentation", "time_evolved"]
+        if options.is_instance_valid(expected_options):
+            self.options = options
+
+    def ready_plot(self, data_processors: dict[str, DataProcessor]):
         self.fig = scatter_prepper(self.fig)
         self.fig.update_layout(
             title={'text': self.title},
-            legend_title=options["legend_title"],
+            legend_title=self.options.get_option("legend_title")
         )
         self.data_processors = data_processors
 
