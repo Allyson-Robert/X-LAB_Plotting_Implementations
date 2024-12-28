@@ -4,6 +4,7 @@ from utils.plot_preppers.export_to_svg import get_svg_config
 from analysis.plotters.plotter_options import PlotterOptions
 from analysis.plotters.plotter import Plotter
 import plotly.graph_objects as go
+import plotly.colors
 
 
 class HistogramPlotter(Plotter):
@@ -15,11 +16,11 @@ class HistogramPlotter(Plotter):
 
         self.data_processors = None
 
-    def ready_plot(self, data_processors: dict[str, DataProcessor], options: dict):
         # This is very similar to ScatterPlotter
         expected_options = ["y_title", "legend_title", "presentation", "time_evolved"]
         if options.is_instance_valid(expected_options):
             self.options = options
+        self.options.add_option(label="colourscale", value=plotly.colors.get_colorscale("Viridis"))
 
     def ready_plot(self, data_processors: dict[str, DataProcessor]):
         self.fig = scatter_prepper(self.fig)

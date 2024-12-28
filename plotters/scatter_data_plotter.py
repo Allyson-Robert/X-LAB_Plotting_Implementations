@@ -16,16 +16,8 @@ class ScatterDataPlotter(Plotter):
         self.y_observable = y_observable
 
         self.data_processors = None
-
-        self.line = None
-        self.colorscale = plotly.colors.get_colorscale("Viridis")
         self.titles_set = False
-        expected_options = []
-        for option in expected_options:
-            try:
-                options.get_option(label = option)
-            except:
-                raise ValueError("Invalid Options Object")
+        self.sort_x_array = False
 
         expected_options = ["x_title", "y_title", "legend_title", "presentation", "time_evolved"]
         if options.is_instance_valid(expected_options):
@@ -40,16 +32,17 @@ class ScatterDataPlotter(Plotter):
         )
         self.data_processors = data_processors
 
-        # Define line properties
-        if options["presentation"] or options["time_evolved"]:
-            self.line = dict()
+        # Line should be thicker for presentations
+        if self.options.get_option("presentation"):
+            self.options.add_option(label="line", value={"width": 5})
+        else:
+            self.options.add_option(label="line", value={"width": 1})
 
-        if options["presentation"]:
-            self.line["width"] = 5
+        # Set colourscale for the continuous time evolved data
+        if self.options.get_option("time_evolved"):
+            self.options.add_option(label="colourscale", value=plotly.colors.get_colorscale("Magenta"))
 
-        if options["time_evolved"]:
-            self.colorscale = plotly.colors.get_colorscale("Magenta")
-
+    # Gets called by draw_plot to populate with data units if not manually set
     def set_axes_titles(self, x_title, y_title):
         self.fig.update_layout(
             xaxis_title=x_title,
@@ -61,8 +54,9 @@ class ScatterDataPlotter(Plotter):
         # FEATURE REQUEST: Draw plots with errors
         for index, lbl in enumerate(self.data_processors):
             # Set line colour for current line
-            if self.line is not None:
-                self.line["color"] = get_colour(self.colorscale, index/len(self.data_processors))
+            line = self.options.get_option("line")
+            line["color"] = get_colour(self.options.get_option("colourscale"), index/len(self.data_processors))
+            self.options.add_option("line", line)
 
             # Grab and plot data
             scatter = self.data_processors[lbl]
@@ -71,7 +65,7 @@ class ScatterDataPlotter(Plotter):
                 y=scatter.get_data(self.y_observable, *args, **kwargs),
                 mode='lines',
                 name=scatter.get_data('label'),
-                line=self.line
+                line=line
             ))
 
         # Grab axis titles from last IVData if they have not yet been externally set
