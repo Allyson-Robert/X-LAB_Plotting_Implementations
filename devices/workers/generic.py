@@ -8,9 +8,9 @@ from analysis.plotters.plotter_options import PlotterOptions
 
 class Generic(DeviceWorkerCore):
 
-    def __init__(self, device, fileset, plot_type, options: PlotterOptions):
+    def __init__(self, device, dataspec, plot_type, options: PlotterOptions):
         # super() delegates method calls to a parent
-        super().__init__(device, fileset, plot_type)
+        super().__init__(device, dataspec, plot_type)
 
         self.x_title = None
         self.y_title = None

@@ -20,7 +20,7 @@ class DeviceWorker(ABC, QtCore.QObject, metaclass=WorkerMeta):
         decorate_abc_with_debug_logging(cls, methods_to_decorate, log_level=DEBUG_WORKER)
 
     @abstractmethod
-    def set_data(self, fileset: DataSpec):
+    def set_data(self, dataspec: DataSpec):
         pass
 
     @abstractmethod
@@ -41,11 +41,11 @@ class DeviceWorkerCore(DeviceWorker, ConsoleLogging):
     finished = QtCore.pyqtSignal()
     progress = QtCore.pyqtSignal(int)
 
-    def __init__(self, device, fileset, plot_type):
+    def __init__(self, device, dataspec, plot_type):
         super().__init__()
 
         self.device = device
-        self.fileset = fileset
+        self.dataspec = dataspec
         self.plot_type = plot_type
 
         self.data_processors = None
@@ -59,17 +59,17 @@ class DeviceWorkerCore(DeviceWorker, ConsoleLogging):
     def set_processor_type(self, processor_type):
         self.processor_type = processor_type
 
-    def set_data(self, fileset: DataSpec):
-        # CHECK: Check that data and processor types have been set
+    def set_data(self, dataspec: DataSpec):
+        # CHECK: Check that dataspec and processor types have been set
         # Initialise an empty dict and get the required filepaths
         self.data_processors = {}
-        filepaths = fileset.get_filepaths()
+        filepaths = dataspec.get_filepaths()
 
         # Progress housekeeping
         nr_of_files = len(filepaths)
         counter = 0
 
-        # Read the data and instantiate a processor for each file
+        # Read the dataspec and instantiate a processor for each file
         for key in filepaths:
             data = self.data_type(key)
             data.read_file(filepaths[key])
@@ -81,9 +81,9 @@ class DeviceWorkerCore(DeviceWorker, ConsoleLogging):
 
     def run(self):
         # Set the data
-        self.set_data(self.fileset)
+        self.set_data(self.dataspec)
 
         # Grab the correct plot and execute it
         plot_type = getattr(self, self.plot_type)
-        plot_type(title=self.fileset.get_name())
+        plot_type(title=self.dataspec.get_name())
         self.finished.emit()
