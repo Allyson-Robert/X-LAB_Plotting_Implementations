@@ -41,7 +41,10 @@ class HistogramPlotter(Plotter):
             processor = self.data_processors[lbl]
 
             self.fig.add_trace(
-                go.Histogram(x=processor.get_data(self.observable))
+                go.Histogram(
+                    x=processor.get_data(self.observable),
+                    name=processor.get_data("label")
+                )
             )
 
         # Grab axis titles from last processor if they have not yet been externally set
