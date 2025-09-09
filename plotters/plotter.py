@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from analysis_example.data.data_processors.data_processors import DataProcessor
+from analysis.data.data_processors.data_processors import DataProcessor
 from utils.logging import decorate_abc_with_debug_logging, DEBUG_PLOTTER
 
 class Plotter(ABC):
@@ -9,7 +9,7 @@ class Plotter(ABC):
         decorate_abc_with_debug_logging(cls, methods_to_decorate, log_level=DEBUG_PLOTTER)
 
     @abstractmethod
-    def ready_plot(self, processors: DataProcessor, options: dict):
+    def ready_plot(self, processors: DataProcessor):
         pass
 
     @abstractmethod
