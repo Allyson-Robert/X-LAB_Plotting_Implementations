@@ -2,7 +2,7 @@ from abc import ABC, abstractmethod
 from utils.logging import decorate_abc_with_debug_logging, DEBUG_DATA_TYPE
 
 
-# Abstract class for all data types
+# Abstract class_utils for all data types
 class AbstractData(ABC):
     # This automatically wraps all of the abstract methods when implemented
     # CHECK: This leads to a lot of messages at the DEBUG level, maybe I can define custom levels between DEBUG and INFO to manage the depth
@@ -27,7 +27,7 @@ class AbstractData(ABC):
         pass
 
 
-# Master class with implementation of 1) get_data, 2) get_units and 3) get_allowed_observables
+# Master class_utils with implementation of 1) get_data, 2) get_units and 3) get_allowed_observables
 class DataModel(AbstractData):
     def __init__(self):
         self.raw_data = {}
