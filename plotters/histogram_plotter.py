@@ -18,7 +18,7 @@ class HistogramPlotter(Plotter):
 
         # This is very similar to ScatterPlotter
         expected_options = ["y_title", "legend_title", "presentation", "time_evolved"]
-        if options.is_instance_valid(expected_options):
+        if options.has_options(expected_options):
             self.options = options
         self.options.add_option(label="colourscale", value=plotly.colors.get_colorscale("Viridis"))
 
