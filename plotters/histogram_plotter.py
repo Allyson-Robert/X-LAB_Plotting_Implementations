@@ -8,7 +8,7 @@ import plotly.colors
 
 
 class HistogramPlotter(Plotter):
-    def __init__(self, title, observable: str, options: PlotterOptions):
+    def __init__(self, title, observable: str):
         self.titles_set = None
         self.title = title
         self.fig = go.Figure()
@@ -22,11 +22,11 @@ class HistogramPlotter(Plotter):
             self.options = options
         self.options.add_option(label="colourscale", value=plotly.colors.get_colorscale("Viridis"))
 
-    def ready_plot(self, data_processors: dict[str, DataProcessor]):
+    def ready_plot(self, data_processors: dict[str, DataProcessor], options: PlotterOptions):
         self.fig = scatter_prepper(self.fig)
         self.fig.update_layout(
             title={'text': self.title},
-            legend_title=self.options.get_option("legend_title")
+            legend_title=options.get_option("legend_title")
         )
         self.data_processors = data_processors
 
