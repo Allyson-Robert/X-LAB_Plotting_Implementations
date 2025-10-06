@@ -8,7 +8,7 @@ import plotly.colors
 
 
 class HistogramPlotter(Plotter):
-    def __init__(self, title, observable: str):
+    def __init__(self, title, observable: str, options: PlotterOptions):
         self.titles_set = None
         self.title = title
         self.fig = go.Figure()
