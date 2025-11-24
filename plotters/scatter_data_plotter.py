@@ -24,7 +24,7 @@ class ScatterDataPlotter(Plotter):
             self.options = options
         options.add_option(label="colourscale", value=plotly.colors.get_colorscale("Viridis"))
 
-    def ready_plot(self, data_processors: dict[str, DataProcessor]):
+    def ready_plot(self, data_processors: dict[str, DataProcessor], options: PlotterOptions):
         self.fig = scatter_prepper(self.fig)
         self.fig.update_layout(
             title={'text': self.title},

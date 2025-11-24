@@ -26,7 +26,7 @@ class Generic(DeviceWorkerCore):
         Show the scatter plot
         """
         plotter = ScatterDataPlotter(title, "independent", "dependent", self.options)
-        plotter.ready_plot(self.data_processors)
+        plotter.ready_plot(self.data_processors, options=self.options)
         plotter.set_axes_titles(self.options.get_option("x_title"), self.options.get_option("y_title"))
         plotter.draw_plot()
 
@@ -35,6 +35,6 @@ class Generic(DeviceWorkerCore):
         Show a histogram
         """
         plotter = HistogramPlotter(title, "dependent", self.options)
-        plotter.ready_plot(self.data_processors)
+        plotter.ready_plot(self.data_processors, options=self.options)
         plotter.set_axes_titles(self.options.get_option("y_title"))
         plotter.draw_plot()
