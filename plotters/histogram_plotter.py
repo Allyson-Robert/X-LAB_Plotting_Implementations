@@ -8,6 +8,35 @@ import plotly.colors
 
 
 class HistogramPlotter(Plotter):
+    """
+    HistogramPlotter
+    ================
+
+    A Plotly-based histogram plotter for processed observables. This class
+    implements the `Plotter` interface and visualises a single observable
+    from one or more `DataProcessor` instances as overlaid histograms.
+
+    Overview
+    --------
+    `HistogramPlotter`:
+
+    - Accepts a dictionary of `DataProcessor` objects keyed by label
+    - Plots a histogram for the chosen observable from each processor
+    - Uses `PlotterOptions` to configure axis titles, legend title,
+      and other layout options
+    - Adds a default colourscale to the options for consistent styling
+
+    The x-axis represents the selected observable, while the y-axis shows
+    the counts in each histogram bin.
+
+    Usage Notes
+    -----------
+    Call `ready_plot` with the data processors and options to configure the
+    figure, then call `set_axes_titles` to customise axis labels if desired.
+    Finally, call `draw_plot` to render the histogram and show it using the
+    SVG export configuration.
+    """
+
     def __init__(self, title, observable: str, options: PlotterOptions):
         self.titles_set = None
         self.title = title

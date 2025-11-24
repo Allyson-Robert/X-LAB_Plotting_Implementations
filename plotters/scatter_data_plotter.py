@@ -9,6 +9,36 @@ import plotly.colors
 
 
 class ScatterDataPlotter(Plotter):
+    """
+    ScatterDataPlotter
+    ==================
+
+    A Plotly-based line scatter plotter for generic x–y datasets. This class
+    implements the `Plotter` interface and draws one or more traces from
+    `DataProcessor` instances.
+
+    Overview
+    --------
+    `ScatterDataPlotter`:
+
+    - Plots a chosen x observable versus a chosen y observable
+    - Accepts a dictionary of `DataProcessor` objects keyed by label
+    - Uses `PlotterOptions` to set axis titles, legend title, and line
+      styling
+    - Supports a "presentation" mode with thicker lines
+    - Supports "time_evolved" plots by switching to a different colourscale
+
+    Each trace is assigned a colour from the configured colourscale based on
+    its index, and is plotted as a continuous line.
+
+    Usage Notes
+    -----------
+    Call `ready_plot` to prepare the figure and configure options, then
+    optionally call `set_axes_titles` to override axis labels. Finally,
+    call `draw_plot` to add all traces and display the figure using the SVG
+    export configuration.
+    """
+
     def __init__(self, title, x_observable: str, y_observable: str, options: PlotterOptions):
         self.title = title
         self.fig = go.Figure()

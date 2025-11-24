@@ -1,0 +1,20 @@
+site_name: X-LAB Plotting Implementation
+site_description: "Example implementation modules for X-LAB Plotting (data, workers, plotters, etc)."
+repo_url: https://github.com/Allyson-Robert/X-LAB_Plotting_Manager_Implementations
+
+theme:
+  name: material
+
+plugins:
+  - search
+  - mkdocstrings:
+      default_handler: python
+
+nav:
+  - Home: index.md
+  - API Reference:
+      - generic scatter data: api/generic_scatter.md
+      - scatter data processor: api/scatter_data_processor.md
+      - generic worker: api/generic_worker.md
+      - histogram plotter: api/histogram_plotter.md
+      - scatter data plotter: api/scatter_data_plotter.md

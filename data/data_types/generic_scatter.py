@@ -4,6 +4,45 @@ import pandas as pd
 
 
 class GenericScatterData(DataCore):
+    """
+    GenericScatterData
+    ==================
+
+    A lightweight data container class for simple two-column scatter-type datasets.
+    This class derives from `DataCore` and provides a minimal implementation for
+    reading CSV or Excel files containing paired *independent* (x) and *dependent*
+    (y) variables.
+
+    Overview
+    --------
+    `GenericScatterData` is intended for plotters or processors that work with
+    generic x–y data without prescribing specific physical quantities. The class:
+
+    - Stores all raw observable data
+    - Exposes four possible observables:
+        - ``label``: A string passed during construction.
+        - ``independent``: X-axis data (units: "Independent var (a.u.)").
+        - ``dependent``: Y-axis data (units: "Dependent var (a.u.)").
+        - ``datetime``: Extracted from the filename
+
+    Attributes
+    ----------
+    label_format : str
+        Datetime formatting string used for timestamp extraction from filenames.
+
+    dt_pattern : str
+        Regular expression pattern for detecting the encoded timestamp in filenames.
+
+    _allowed_observables : KeysView
+        Set internally based on ``raw_data`` keys. Used by :meth:`DataCore.get_data`.
+
+    Usage Notes
+    -----------
+    This class is commonly paired with :class:`DataProcessor` subclasses and may be
+    used by scatter-based plotters. It is intentionally generic: units and semantic
+    meaning of variables are left to the user or to processing layers.
+
+    """
     def __init__(self, label):
         super().__init__()
         self.raw_data = {

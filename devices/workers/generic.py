@@ -7,6 +7,32 @@ from contracts.plotter_options import PlotterOptions
 
 
 class Generic(DeviceWorkerCore):
+    """
+    Generic
+    =======
+
+    Device worker for generic scatter-type datasets. This class extends
+    `DeviceWorkerCore` and wires together the data type, processor, and
+    plotters for simple scatter and histogram visualisations.
+
+    Overview
+    --------
+    `Generic` configures the worker to use:
+
+    - `GenericScatterData` as the underlying data container
+    - `ScatterDataProcessor` to access and validate observables
+    - `ScatterDataPlotter` for x–y scatter plots
+    - `HistogramPlotter` for value distributions
+
+    It uses a `PlotterOptions` instance to control plot appearance, axis
+    titles, and legend labels.
+
+    Usage Notes
+    -----------
+    Use `plot` to generate a standard scatter plot of the *independent*
+    versus *dependent* observable, and `plot_distribution` to generate
+    a histogram of the *dependent* observable across all loaded datasets.
+    """
 
     def __init__(self, device, dataspec, plot_type, options: PlotterOptions):
         # super() delegates method calls to a parent
