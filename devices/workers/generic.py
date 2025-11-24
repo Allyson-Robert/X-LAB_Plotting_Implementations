@@ -10,7 +10,7 @@ class Generic(DeviceWorkerCore):
 
     def __init__(self, device, dataspec, plot_type, options: PlotterOptions):
         # super() delegates method calls to a parent
-        super().__init__(device, dataspec, plot_type)
+        super().__init__(device, dataspec, plot_type, options)
 
         self.x_title = None
         self.y_title = None
