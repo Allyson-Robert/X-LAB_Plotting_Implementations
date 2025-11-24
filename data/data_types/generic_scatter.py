@@ -1,9 +1,9 @@
-from contracts.data_types import DataModel
-from utils.file_readers.read_csv import read_csv
+from contracts.data_types import DataCore
+from utils.file_readers.read_table_csv import read_csv
 import pandas as pd
 
 
-class GenericScatterData(DataModel):
+class GenericScatterData(DataCore):
     def __init__(self, label):
         super().__init__()
         self.raw_data = {

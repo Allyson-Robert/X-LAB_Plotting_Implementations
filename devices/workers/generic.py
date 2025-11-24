@@ -1,8 +1,8 @@
-from analysis.data.data_processors.scatter_data_processor import ScatterDataProcessor
-from analysis.data.data_types.generic_scatter import GenericScatterData
+from implementations.data.data_processors.scatter_data_processor import ScatterDataProcessor
+from implementations.data.data_types.generic_scatter import GenericScatterData
 from contracts.device_worker import DeviceWorkerCore
-from analysis.plotters.scatter_data_plotter import ScatterDataPlotter
-from analysis.plotters.histogram_plotter import HistogramPlotter
+from implementations.plotters.scatter_data_plotter import ScatterDataPlotter
+from implementations.plotters.histogram_plotter import HistogramPlotter
 from contracts.plotter_options import PlotterOptions
 
 
