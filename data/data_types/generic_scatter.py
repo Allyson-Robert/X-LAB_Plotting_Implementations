@@ -1,4 +1,4 @@
-from analysis.data.data_types.data_types import DataModel
+from contracts.data_types import DataModel
 from utils.file_readers.read_csv import read_csv
 import pandas as pd
 

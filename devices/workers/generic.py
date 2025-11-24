@@ -1,9 +1,9 @@
 from analysis.data.data_processors.scatter_data_processor import ScatterDataProcessor
 from analysis.data.data_types.generic_scatter import GenericScatterData
-from analysis.devices.workers.device_worker import DeviceWorkerCore
+from contracts.device_worker import DeviceWorkerCore
 from analysis.plotters.scatter_data_plotter import ScatterDataPlotter
 from analysis.plotters.histogram_plotter import HistogramPlotter
-from analysis.plotters.plotter_options import PlotterOptions
+from contracts.plotter_options import PlotterOptions
 
 
 class Generic(DeviceWorkerCore):

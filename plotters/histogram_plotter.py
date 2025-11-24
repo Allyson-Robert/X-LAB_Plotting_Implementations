@@ -1,8 +1,8 @@
-from analysis.data.data_processors.data_processors import DataProcessor
+from contracts.data_processors import DataProcessor
 from utils.plot_preppers.scatter_prep import scatter_prepper
 from utils.plot_preppers.export_to_svg import get_svg_config
-from analysis.plotters.plotter_options import PlotterOptions
-from analysis.plotters.plotter import Plotter
+from contracts.plotter_options import PlotterOptions
+from contracts.plotter import Plotter
 import plotly.graph_objects as go
 import plotly.colors
 
