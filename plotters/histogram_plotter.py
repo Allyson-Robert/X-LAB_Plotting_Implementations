@@ -5,8 +5,10 @@ from contracts.plotter_options import PlotterOptions
 from contracts.plotter import Plotter
 import plotly.graph_objects as go
 import plotly.colors
+from utils.logging import decorate_class_with_logging, DEBUG_PLOTTER
 
 
+@decorate_class_with_logging(log_level=DEBUG_PLOTTER)
 class HistogramPlotter(Plotter):
     """
     HistogramPlotter

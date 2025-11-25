@@ -1,6 +1,6 @@
 from contracts.data_types import DataCore
 from implementations.utils.file_readers.read_table_csv import read_csv
-
+from utils.logging import with_logging, DEBUG_DATA_TYPE
 
 class GenericScatterData(DataCore):
     """
@@ -54,6 +54,7 @@ class GenericScatterData(DataCore):
         self.label_format = "%Y_%m_%d_%H_%M_%S"
         self.dt_pattern = '\d{4}_\d{2}_\d{2}_\d{2}_\d{2}_\d{2}'
 
+    @with_logging
     def read_file(self, filepath: str):
         data = self.file_reader(filepath)
         # Assume first two columns are independent and dependent variables

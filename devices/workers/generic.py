@@ -4,8 +4,9 @@ from contracts.device_worker import DeviceWorkerCore
 from implementations.plotters.scatter_data_plotter import ScatterDataPlotter
 from implementations.plotters.histogram_plotter import HistogramPlotter
 from contracts.plotter_options import PlotterOptions
+from utils.logging import decorate_class_with_logging, DEBUG_WORKER
 
-
+@decorate_class_with_logging(log_level=DEBUG_WORKER)
 class Generic(DeviceWorkerCore):
     """
     Generic

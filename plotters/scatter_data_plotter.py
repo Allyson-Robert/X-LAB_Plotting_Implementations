@@ -6,8 +6,10 @@ from contracts.plotter import Plotter
 from implementations.utils.get_colour import get_colour
 import plotly.graph_objects as go
 import plotly.colors
+from utils.logging import decorate_class_with_logging, DEBUG_PLOTTER
 
 
+@decorate_class_with_logging(log_level=DEBUG_PLOTTER)
 class ScatterDataPlotter(Plotter):
     """
     ScatterDataPlotter
