@@ -13,8 +13,16 @@ plugins:
 nav:
   - Home: index.md
   - API Reference:
-      - generic scatter data: api/generic_scatter.md
-      - scatter data processor: api/scatter_data_processor.md
-      - generic worker: api/generic_worker.md
-      - histogram plotter: api/histogram_plotter.md
-      - scatter data plotter: api/scatter_data_plotter.md
+      - data:
+          - generic scatter data: api/data/generic_scatter.md
+          - scatter data processor: api/data/scatter_data_processor.md
+      - devices:
+          - generic worker: api/devices/generic_worker.md
+      - plotters:
+          - histogram plotter: api/plotters/histogram_plotter.md
+          - scatter data plotter: api/plotters/scatter_data_plotter.md
+      - utils:
+          - get_colour: api/utils/get_colour.md
+          - export_to_svg: api/utils/export_to_svg.md
+          - scatter_prep: api/utils/scatter_prep.md
+          - read_table_csv: api/utils/read_table_csv.md
