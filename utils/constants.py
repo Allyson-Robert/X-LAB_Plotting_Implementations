@@ -4,3 +4,4 @@ WINDOW_PATH = "gui/windows/MainWindow.ui"
 DEVICE_PATH = "implementations/devices/"
 WIDGET_PATH = DEVICE_PATH + "widgets/"
 LOGO_PATH = "gui/logos/"
+LOG_LEVEL = 10
