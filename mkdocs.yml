@@ -12,6 +12,10 @@ plugins:
 
 nav:
   - Home: index.md
+  - Guide:
+      - What this example provides: what-this-example-provides.md
+      - Concepts & architecture: concepts-and-architecture.md
+      - Using & extending: using-and-extending.md
   - API Reference:
       - data:
           - generic scatter data: api/data/generic_scatter.md
