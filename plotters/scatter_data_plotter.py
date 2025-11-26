@@ -3,7 +3,7 @@ from implementations.utils.plot_preppers.scatter_prep import scatter_prepper
 from implementations.utils.plot_preppers.export_to_svg import get_svg_config
 from contracts.plotter_options import PlotterOptions
 from contracts.plotter import Plotter
-from implementations.utils.plotly_colour_helpers import get_plotly_colour
+from implementations.utils.plotly_colour_helpers.get_plotly_colour import get_plotly_colour
 import plotly.graph_objects as go
 import plotly.colors
 from utils.logging import decorate_class_with_logging, DEBUG_PLOTTER
@@ -87,7 +87,7 @@ class ScatterDataPlotter(Plotter):
         for index, lbl in enumerate(self.data_processors):
             # Set line colour for current line
             line = self.options.get_option("line")
-            line["color"] = get_colour(self.options.get_option("colourscale"), index/len(self.data_processors))
+            line["color"] = get_plotly_colour(self.options.get_option("colourscale"), index/len(self.data_processors))
             self.options.add_option("line", line)
 
             # Grab and plot data
