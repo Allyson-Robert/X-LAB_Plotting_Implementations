@@ -47,12 +47,10 @@ device-specific modules.
 
 Full documentation is available in the `docs/` folder:
 
--   **concepts-and-architecture.md** --- Overview of the architecture\
--   **using-and-extending.md** --- How to extend or replace components\
--   **api/** --- API reference for data, devices, plotters, and
-    utilities\
--   **what-this-example-provides.md** --- Summary of the example's
-    structure
+- Overview: [index.md](docs/index.md)
+- Concept: [concepts-and-architecture.md](docs/concepts-and-architecture.md)
+- Using and Extending: [using-and-extending.md](docs/using-and-extending.md)
+- What this Example Provides: [what-this-example-provides.md](docs/what-this-example-provides.md)
 
 ## 🚀 Purpose
 
