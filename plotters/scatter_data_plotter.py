@@ -3,7 +3,7 @@ from implementations.utils.plot_preppers.scatter_prep import scatter_prepper
 from implementations.utils.plot_preppers.export_to_svg import get_svg_config
 from contracts.plotter_options import PlotterOptions
 from contracts.plotter import Plotter
-from implementations.utils.get_colour import get_colour
+from implementations.utils.plotly_colour_helpers import get_plotly_colour
 import plotly.graph_objects as go
 import plotly.colors
 from utils.logging import decorate_class_with_logging, DEBUG_PLOTTER
