@@ -8,7 +8,7 @@ device workers that integrate cleanly with the X-LAB GUI.
 In the most general sense, this example shows how to implement the 
 following class/methods structure:
 
-![X-LAB Implementation Structure](docs/images/Contracts.png)
+![X-LAB Implementation Structure](docs/Contracts.png)
 
 ## 📘 What This Example Includes
 
