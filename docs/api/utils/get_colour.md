@@ -1,2 +1,2 @@
 # Get Colour
-::: utils.get_colour.get_colour
+::: utils.plotly_colour_helpers.get_plotly_colour.get_plotly_colour
