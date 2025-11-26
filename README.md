@@ -47,10 +47,10 @@ device-specific modules.
 
 Full documentation is available in the `docs/` folder:
 
-- Overview: [index.md](docs/index.md)
-- Concept: [concepts-and-architecture.md](docs/concepts-and-architecture.md)
-- Using and Extending: [using-and-extending.md](docs/using-and-extending.md)
-- What this Example Provides: [what-this-example-provides.md](docs/what-this-example-provides.md)
+- Overview: [docs/index.md](docs/index.md)
+- Concept: [docs/concepts-and-architecture.md](docs/concepts-and-architecture.md)
+- Using and Extending: [docs/using-and-extending.md](docs/using-and-extending.md)
+- What this Example Provides: [docs/what-this-example-provides.md](docs/what-this-example-provides.md)
 
 ## 🚀 Purpose
 
