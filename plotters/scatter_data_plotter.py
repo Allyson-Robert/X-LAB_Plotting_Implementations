@@ -72,7 +72,7 @@ class ScatterDataPlotter(Plotter):
 
         # Set colourscale for the continuous time evolved data
         if self.options.get_option("time_evolved"):
-            self.options.add_option(label="colourscale", value=plotly.colors.get_colorscale("Magenta"))
+            self.options.update_option(label="colourscale", value=plotly.colors.get_colorscale("Magenta"))
 
     # Gets called by draw_plot to populate with data units if not manually set
     def set_axes_titles(self, x_title, y_title):
