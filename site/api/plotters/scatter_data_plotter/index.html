@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>scatter data plotter - X-LAB Plotting Implementation</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../../assets/_mkdocstrings.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "scatter data plotter";
+        var mkdocs_page_input_path = "api\\plotters\\scatter_data_plotter.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> X-LAB Plotting Implementation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Guide</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../what-this-example-provides/">What this example provides</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../concepts-and-architecture/">Concepts & architecture</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../using-and-extending/">Using & extending</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">API Reference</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" >data</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../data/generic_scatter/">generic scatter data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../data/scatter_data_processor/">scatter data processor</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >devices</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../devices/generic_worker/">generic worker</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" >plotters</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../histogram_plotter/">histogram plotter</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="#">scatter data plotter</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#plotters.scatter_data_plotter.ScatterDataPlotter">ScatterDataPlotter</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#plotters.scatter_data_plotter.ScatterDataPlotter--scatterdataplotter">ScatterDataPlotter</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#plotters.scatter_data_plotter.ScatterDataPlotter--overview">Overview</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#plotters.scatter_data_plotter.ScatterDataPlotter--usage-notes">Usage Notes</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >utils</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../utils/get_colour/">get_colour</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../utils/export_to_svg/">export_to_svg</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../utils/scatter_prep/">scatter_prep</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../utils/read_table_csv/">read_table_csv</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">X-LAB Plotting Implementation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">API Reference</li>
+          <li class="breadcrumb-item">plotters</li>
+      <li class="breadcrumb-item active">scatter data plotter</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/Allyson-Robert/X-LAB_Plotting_Manager_Implementations/edit/master/docs/api/plotters/scatter_data_plotter.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="scatter-data-plotter">Scatter Data Plotter</h1>
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<a id="plotters.scatter_data_plotter.ScatterDataPlotter"></a>
+    <div class="doc doc-contents first">
+            <p class="doc doc-class-bases">
+              Bases: <code><span title="contracts.plotter.Plotter">Plotter</span></code></p>
+
+
+
+        <h2 id="plotters.scatter_data_plotter.ScatterDataPlotter--scatterdataplotter">ScatterDataPlotter</h2>
+<p>A Plotly-based line scatter plotter for generic x–y datasets. This class
+implements the <code>Plotter</code> interface and draws one or more traces from
+<code>DataProcessor</code> instances.</p>
+<h3 id="plotters.scatter_data_plotter.ScatterDataPlotter--overview">Overview</h3>
+<p><code>ScatterDataPlotter</code>:</p>
+<ul>
+<li>Plots a chosen x observable versus a chosen y observable</li>
+<li>Accepts a dictionary of <code>DataProcessor</code> objects keyed by label</li>
+<li>Uses <code>PlotterOptions</code> to set axis titles, legend title, and line
+  styling</li>
+<li>Supports a "presentation" mode with thicker lines</li>
+<li>Supports "time_evolved" plots by switching to a different colourscale</li>
+</ul>
+<p>Each trace is assigned a colour from the configured colourscale based on
+its index, and is plotted as a continuous line.</p>
+<h3 id="plotters.scatter_data_plotter.ScatterDataPlotter--usage-notes">Usage Notes</h3>
+<p>Call <code>ready_plot</code> to prepare the figure and configure options, then
+optionally call <code>set_axes_titles</code> to override axis labels. Finally,
+call <code>draw_plot</code> to add all traces and display the figure using the SVG
+export configuration.</p>
+
+
+
+
+
+
+
+              <details class="quote">
+                <summary>Source code in <code>plotters\scatter_data_plotter.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 12</span>
+<span class="normal"> 13</span>
+<span class="normal"> 14</span>
+<span class="normal"> 15</span>
+<span class="normal"> 16</span>
+<span class="normal"> 17</span>
+<span class="normal"> 18</span>
+<span class="normal"> 19</span>
+<span class="normal"> 20</span>
+<span class="normal"> 21</span>
+<span class="normal"> 22</span>
+<span class="normal"> 23</span>
+<span class="normal"> 24</span>
+<span class="normal"> 25</span>
+<span class="normal"> 26</span>
+<span class="normal"> 27</span>
+<span class="normal"> 28</span>
+<span class="normal"> 29</span>
+<span class="normal"> 30</span>
+<span class="normal"> 31</span>
+<span class="normal"> 32</span>
+<span class="normal"> 33</span>
+<span class="normal"> 34</span>
+<span class="normal"> 35</span>
+<span class="normal"> 36</span>
+<span class="normal"> 37</span>
+<span class="normal"> 38</span>
+<span class="normal"> 39</span>
+<span class="normal"> 40</span>
+<span class="normal"> 41</span>
+<span class="normal"> 42</span>
+<span class="normal"> 43</span>
+<span class="normal"> 44</span>
+<span class="normal"> 45</span>
+<span class="normal"> 46</span>
+<span class="normal"> 47</span>
+<span class="normal"> 48</span>
+<span class="normal"> 49</span>
+<span class="normal"> 50</span>
+<span class="normal"> 51</span>
+<span class="normal"> 52</span>
+<span class="normal"> 53</span>
+<span class="normal"> 54</span>
+<span class="normal"> 55</span>
+<span class="normal"> 56</span>
+<span class="normal"> 57</span>
+<span class="normal"> 58</span>
+<span class="normal"> 59</span>
+<span class="normal"> 60</span>
+<span class="normal"> 61</span>
+<span class="normal"> 62</span>
+<span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@decorate_class_with_logging</span><span class="p">(</span><span class="n">log_level</span><span class="o">=</span><span class="n">DEBUG_PLOTTER</span><span class="p">)</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">ScatterDataPlotter</span><span class="p">(</span><span class="n">Plotter</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    ScatterDataPlotter</span>
+<span class="sd">    ==================</span>
+
+<span class="sd">    A Plotly-based line scatter plotter for generic x–y datasets. This class</span>
+<span class="sd">    implements the `Plotter` interface and draws one or more traces from</span>
+<span class="sd">    `DataProcessor` instances.</span>
+
+<span class="sd">    Overview</span>
+<span class="sd">    --------</span>
+<span class="sd">    `ScatterDataPlotter`:</span>
+
+<span class="sd">    - Plots a chosen x observable versus a chosen y observable</span>
+<span class="sd">    - Accepts a dictionary of `DataProcessor` objects keyed by label</span>
+<span class="sd">    - Uses `PlotterOptions` to set axis titles, legend title, and line</span>
+<span class="sd">      styling</span>
+<span class="sd">    - Supports a &quot;presentation&quot; mode with thicker lines</span>
+<span class="sd">    - Supports &quot;time_evolved&quot; plots by switching to a different colourscale</span>
+
+<span class="sd">    Each trace is assigned a colour from the configured colourscale based on</span>
+<span class="sd">    its index, and is plotted as a continuous line.</span>
+
+<span class="sd">    Usage Notes</span>
+<span class="sd">    -----------</span>
+<span class="sd">    Call `ready_plot` to prepare the figure and configure options, then</span>
+<span class="sd">    optionally call `set_axes_titles` to override axis labels. Finally,</span>
+<span class="sd">    call `draw_plot` to add all traces and display the figure using the SVG</span>
+<span class="sd">    export configuration.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">x_observable</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">y_observable</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">options</span><span class="p">:</span> <span class="n">PlotterOptions</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="n">title</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fig</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Figure</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">x_observable</span> <span class="o">=</span> <span class="n">x_observable</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y_observable</span> <span class="o">=</span> <span class="n">y_observable</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">data_processors</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">titles_set</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sort_x_array</span> <span class="o">=</span> <span class="kc">False</span>
+
+        <span class="n">expected_options</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;x_title&quot;</span><span class="p">,</span> <span class="s2">&quot;y_title&quot;</span><span class="p">,</span> <span class="s2">&quot;legend_title&quot;</span><span class="p">,</span> <span class="s2">&quot;presentation&quot;</span><span class="p">,</span> <span class="s2">&quot;time_evolved&quot;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">options</span><span class="o">.</span><span class="n">has_options</span><span class="p">(</span><span class="n">expected_options</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">options</span> <span class="o">=</span> <span class="n">options</span>
+        <span class="n">options</span><span class="o">.</span><span class="n">add_option</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;colourscale&quot;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="n">plotly</span><span class="o">.</span><span class="n">colors</span><span class="o">.</span><span class="n">get_colorscale</span><span class="p">(</span><span class="s2">&quot;Viridis&quot;</span><span class="p">))</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">ready_plot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_processors</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">DataProcessor</span><span class="p">],</span> <span class="n">options</span><span class="p">:</span> <span class="n">PlotterOptions</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fig</span> <span class="o">=</span> <span class="n">scatter_prepper</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fig</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span>
+            <span class="n">title</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;text&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">title</span><span class="p">},</span>
+            <span class="n">legend_title</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get_option</span><span class="p">(</span><span class="s2">&quot;legend_title&quot;</span><span class="p">),</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data_processors</span> <span class="o">=</span> <span class="n">data_processors</span>
+
+        <span class="c1"># Line should be thicker for presentations</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get_option</span><span class="p">(</span><span class="s2">&quot;presentation&quot;</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">add_option</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;line&quot;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;width&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">})</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">add_option</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;line&quot;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;width&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">})</span>
+
+        <span class="c1"># Set colourscale for the continuous time evolved data</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get_option</span><span class="p">(</span><span class="s2">&quot;time_evolved&quot;</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">update_option</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;colourscale&quot;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="n">plotly</span><span class="o">.</span><span class="n">colors</span><span class="o">.</span><span class="n">get_colorscale</span><span class="p">(</span><span class="s2">&quot;Magenta&quot;</span><span class="p">))</span>
+
+    <span class="c1"># Gets called by draw_plot to populate with data units if not manually set</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_axes_titles</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x_title</span><span class="p">,</span> <span class="n">y_title</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span>
+            <span class="n">xaxis_title</span><span class="o">=</span><span class="n">x_title</span><span class="p">,</span>
+            <span class="n">yaxis_title</span><span class="o">=</span><span class="n">y_title</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">titles_set</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">draw_plot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="c1"># FEATURE REQUEST: Draw plots with errors</span>
+        <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">lbl</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data_processors</span><span class="p">):</span>
+            <span class="c1"># Set line colour for current line</span>
+            <span class="n">line</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get_option</span><span class="p">(</span><span class="s2">&quot;line&quot;</span><span class="p">)</span>
+            <span class="n">line</span><span class="p">[</span><span class="s2">&quot;color&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">get_plotly_colour</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get_option</span><span class="p">(</span><span class="s2">&quot;colourscale&quot;</span><span class="p">),</span> <span class="n">index</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data_processors</span><span class="p">))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">add_option</span><span class="p">(</span><span class="s2">&quot;line&quot;</span><span class="p">,</span> <span class="n">line</span><span class="p">)</span>
+
+            <span class="c1"># Grab and plot data</span>
+            <span class="n">scatter</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_processors</span><span class="p">[</span><span class="n">lbl</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span><span class="n">go</span><span class="o">.</span><span class="n">Scatter</span><span class="p">(</span>
+                <span class="n">x</span><span class="o">=</span><span class="n">scatter</span><span class="o">.</span><span class="n">get_data</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x_observable</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">),</span>
+                <span class="n">y</span><span class="o">=</span><span class="n">scatter</span><span class="o">.</span><span class="n">get_data</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">y_observable</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">),</span>
+                <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;lines&#39;</span><span class="p">,</span>
+                <span class="n">name</span><span class="o">=</span><span class="n">scatter</span><span class="o">.</span><span class="n">get_data</span><span class="p">(</span><span class="s1">&#39;label&#39;</span><span class="p">),</span>
+                <span class="n">line</span><span class="o">=</span><span class="n">line</span>
+            <span class="p">))</span>
+
+        <span class="c1"># Grab axis titles from last IVData if they have not yet been externally set</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">titles_set</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">set_axes_titles</span><span class="p">(</span>
+                <span class="n">scatter</span><span class="o">.</span><span class="n">get_units</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x_observable</span><span class="p">),</span>
+                <span class="n">scatter</span><span class="o">.</span><span class="n">get_units</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">y_observable</span><span class="p">)</span>
+            <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">config</span><span class="o">=</span><span class="n">get_svg_config</span><span class="p">())</span>
+</code></pre></div></td></tr></table></div>
+              </details>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+
+</div>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../histogram_plotter/" class="btn btn-neutral float-left" title="histogram plotter"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../utils/get_colour/" class="btn btn-neutral float-right" title="get_colour">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/Allyson-Robert/X-LAB_Plotting_Manager_Implementations" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../histogram_plotter/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../../utils/get_colour/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../..";</script>
+    <script src="../../../js/theme_extra.js"></script>
+    <script src="../../../js/theme.js"></script>
+      <script src="../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

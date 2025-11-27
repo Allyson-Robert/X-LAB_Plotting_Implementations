@@ -3,7 +3,7 @@ site_description: "Example implementation modules for X-LAB Plotting (data, work
 repo_url: https://github.com/Allyson-Robert/X-LAB_Plotting_Manager_Implementations
 
 theme:
-  name: material
+  name: readthedocs
 
 plugins:
   - search

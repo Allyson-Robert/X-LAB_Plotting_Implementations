@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>What this example provides - X-LAB Plotting Implementation</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../assets/_mkdocstrings.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "What this example provides";
+        var mkdocs_page_input_path = "what-this-example-provides.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> X-LAB Plotting Implementation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Guide</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">What this example provides</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#1-a-minimal-data-type">1. A Minimal Data Type</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#2-a-simple-data-processor">2. A Simple Data Processor</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#3-example-plotters">3. Example Plotters</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#4-a-device-worker">4. A Device Worker</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../concepts-and-architecture/">Concepts & architecture</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../using-and-extending/">Using & extending</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">API Reference</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" >data</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../api/data/generic_scatter/">generic scatter data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../api/data/scatter_data_processor/">scatter data processor</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >devices</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../api/devices/generic_worker/">generic worker</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >plotters</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../api/plotters/histogram_plotter/">histogram plotter</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../api/plotters/scatter_data_plotter/">scatter data plotter</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >utils</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../api/utils/get_colour/">get_colour</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../api/utils/export_to_svg/">export_to_svg</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../api/utils/scatter_prep/">scatter_prep</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../api/utils/read_table_csv/">read_table_csv</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">X-LAB Plotting Implementation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Guide</li>
+      <li class="breadcrumb-item active">What this example provides</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/Allyson-Robert/X-LAB_Plotting_Manager_Implementations/edit/master/docs/what-this-example-provides.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="what-this-example-provides">What This Example Provides</h1>
+<p>This implementation demonstrates several minimal but complete building blocks
+for X-LAB Plotting.</p>
+<h2 id="1-a-minimal-data-type">1. A Minimal Data Type</h2>
+<p><strong><code>GenericScatterData</code></strong><br />
+A simple two-column x/y dataset container supporting Excel or CSV inputs,
+implemented using the core <code>DataCore</code> interface.</p>
+<p>Use this as a template for defining your own data classes that the X-LAB GUI
+can load and inspect.</p>
+<h2 id="2-a-simple-data-processor">2. A Simple Data Processor</h2>
+<p><strong><code>ScatterDataProcessor</code></strong><br />
+A lightweight processor that validates requested observables and delegates raw
+data access to the data type.</p>
+<p>It shows how processors:</p>
+<ul>
+<li>expose available observables</li>
+<li>validate requests for observables</li>
+<li>hand data off to plotters</li>
+</ul>
+<h2 id="3-example-plotters">3. Example Plotters</h2>
+<ul>
+<li><strong><code>ScatterDataPlotter</code></strong> — for basic line or scatter-style plots  </li>
+<li><strong><code>HistogramPlotter</code></strong> — for quick distribution visualisations</li>
+</ul>
+<p>These plotters demonstrate how to:</p>
+<ul>
+<li>integrate with the core <code>Plotter</code> interface</li>
+<li>consume processed data from a processor</li>
+<li>expose configuration via <code>PlotterOptions</code></li>
+</ul>
+<h2 id="4-a-device-worker">4. A Device Worker</h2>
+<p><strong><code>Generic</code></strong><br />
+A concrete worker that wires the example data type, processor, and plotters
+together.</p>
+<p>This class shows <strong>how the main GUI discovers and uses implementations</strong> and is
+the best starting point when wiring up your own device-specific worker.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href=".." class="btn btn-neutral float-left" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../concepts-and-architecture/" class="btn btn-neutral float-right" title="Concepts & architecture">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/Allyson-Robert/X-LAB_Plotting_Manager_Implementations" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href=".." style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../concepts-and-architecture/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

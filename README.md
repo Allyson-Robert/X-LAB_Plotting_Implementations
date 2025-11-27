@@ -52,6 +52,14 @@ Full documentation is available in the `docs/` folder:
 - Using and Extending: [docs/using-and-extending.md](docs/using-and-extending.md)
 - What this Example Provides: [docs/what-this-example-provides.md](docs/what-this-example-provides.md)
 
+
+Show pre-built docs locally by running:
+```
+python -m http.server -d .\site\ 8000
+```
+Then open your browser to `http://localhost:8000`.
+
+
 ## 🚀 Purpose
 
 This example serves as a **starting point** for developers building new
