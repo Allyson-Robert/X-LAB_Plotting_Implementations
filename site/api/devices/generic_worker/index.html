@@ -260,9 +260,9 @@ a histogram of the <em>dependent</em> observable across all loaded datasets.</p>
 <span class="sd">    a histogram of the *dependent* observable across all loaded datasets.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">device</span><span class="p">,</span> <span class="n">dataspec</span><span class="p">,</span> <span class="n">plot_type</span><span class="p">,</span> <span class="n">options</span><span class="p">:</span> <span class="n">PlotterOptions</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">device</span><span class="p">,</span> <span class="n">dataset</span><span class="p">,</span> <span class="n">plot_type</span><span class="p">,</span> <span class="n">options</span><span class="p">:</span> <span class="n">PlotterOptions</span><span class="p">):</span>
         <span class="c1"># super() delegates method calls to a parent</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">device</span><span class="p">,</span> <span class="n">dataspec</span><span class="p">,</span> <span class="n">plot_type</span><span class="p">,</span> <span class="n">options</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">device</span><span class="p">,</span> <span class="n">dataset</span><span class="p">,</span> <span class="n">plot_type</span><span class="p">,</span> <span class="n">options</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">x_title</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">y_title</span> <span class="o">=</span> <span class="kc">None</span>

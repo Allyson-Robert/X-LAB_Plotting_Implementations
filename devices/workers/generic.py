@@ -35,9 +35,9 @@ class Generic(DeviceWorkerCore):
     a histogram of the *dependent* observable across all loaded datasets.
     """
 
-    def __init__(self, device, dataspec, plot_type, options: PlotterOptions):
+    def __init__(self, device, dataset, plot_type, options: PlotterOptions):
         # super() delegates method calls to a parent
-        super().__init__(device, dataspec, plot_type, options)
+        super().__init__(device, dataset, plot_type, options)
 
         self.x_title = None
         self.y_title = None
