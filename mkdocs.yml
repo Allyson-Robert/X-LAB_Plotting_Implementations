@@ -16,17 +16,17 @@ nav:
       - What this example provides: what-this-example-provides.md
       - Concepts & architecture: concepts-and-architecture.md
       - Using & extending: using-and-extending.md
-  - API Reference:
-      - data:
-          - generic scatter data: api/data/generic_scatter.md
-          - scatter data processor: api/data/scatter_data_processor.md
-      - devices:
-          - generic worker: api/devices/generic_worker.md
-      - plotters:
-          - histogram plotter: api/plotters/histogram_plotter.md
-          - scatter data plotter: api/plotters/scatter_data_plotter.md
-      - utils:
-          - get_colour: api/utils/get_colour.md
-          - export_to_svg: api/utils/export_to_svg.md
-          - scatter_prep: api/utils/scatter_prep.md
-          - read_table_csv: api/utils/read_table_csv.md
+#  - API Reference:
+#      - data:
+#          - generic scatter data: api/data/generic_scatter.md
+#          - scatter data processor: api/data/scatter_data_processor.md
+#      - devices:
+#          - generic worker: api/devices/generic_worker.md
+#      - plotters:
+#          - histogram plotter: api/plotters/histogram_plotter.md
+#          - scatter data plotter: api/plotters/scatter_data_plotter.md
+#      - utils:
+#          - get_colour: api/utils/get_colour.md
+#          - export_to_svg: api/utils/export_to_svg.md
+#          - scatter_prep: api/utils/scatter_prep.md
+#          - read_table_csv: api/utils/read_table_csv.md
