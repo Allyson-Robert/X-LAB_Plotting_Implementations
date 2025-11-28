@@ -105,10 +105,10 @@ Your own implementation can follow the same pattern—simply place it in an `imp
 
 Full documentation is included in the `docs/` directory:
 
-- Overview: `docs/index.md`  
-- Concepts & Architecture: `docs/concepts-and-architecture.md`  
-- Using & Extending: `docs/using-and-extending.md`  
-- Explanation of this example: `docs/what-this-example-provides.md`
+- Overview: [docs/index.md](docs/index.md)  
+- Concepts & Architecture: [docs/concepts-and-architecture.md](docs/concepts-and-architecture.md)  
+- Using & Extending: [docs/using-and-extending.md](docs/using-and-extending.md)  
+- Explanation of this example: [docs/what-this-example-provides.md](docs/what-this-example-provides.md)
 
 ### View pre-built documentation locally
 
