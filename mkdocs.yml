@@ -1,6 +1,7 @@
 site_name: X-LAB Plotting Implementation
 site_description: "Example implementation modules for X-LAB Plotting (data, workers, plotters, etc)."
-repo_url: https://github.com/Allyson-Robert/X-LAB_Plotting_Manager_Implementations
+repo_url: https://github.com/Allyson-Robert/X-LAB_Plotting_Implementations
+site_url: https://allyson-robert.github.io/X-LAB_Plotting_Implementations/
 
 theme:
   name: readthedocs
