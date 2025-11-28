@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>Scatter Data Processor - X-LAB Plotting Implementation</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../../assets/_mkdocstrings.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Scatter Data Processor";
+        var mkdocs_page_input_path = "api\\data\\scatter_data_processor.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> X-LAB Plotting Implementation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Guide</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../what-this-example-provides/">What this example provides</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../concepts-and-architecture/">Concepts & architecture</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../using-and-extending/">Using & extending</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">X-LAB Plotting Implementation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Scatter Data Processor</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/Allyson-Robert/X-LAB_Plotting_Manager_Implementations/edit/master/docs/api/data/scatter_data_processor.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="scatter-data-processor">Scatter Data Processor</h1>
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<a id="data.data_processors.scatter_data_processor.ScatterDataProcessor"></a>
+    <div class="doc doc-contents first">
+            <p class="doc doc-class-bases">
+              Bases: <code><span title="contracts.data_processors.DataProcessorCore">DataProcessorCore</span></code></p>
+
+
+
+        <h2 id="data.data_processors.scatter_data_processor.ScatterDataProcessor--scatterdataprocessor">ScatterDataProcessor</h2>
+<p>A lightweight processor for <code>GenericScatterData</code> objects. This class extends
+<code>DataProcessorCore</code> and provides basic validation of requested observables.
+For more complex data this class would implement some validation or computation
+of derived observables.</p>
+<h3 id="data.data_processors.scatter_data_processor.ScatterDataProcessor--overview">Overview</h3>
+<p><code>ScatterDataProcessor</code> delegates observable access and unit retrieval to the
+underlying <code>GenericScatterData</code> instance. It does not compute additional
+derived quantities as it is not needed; it simply ensures that requested
+observables can be retrieved.</p>
+<ul>
+<li>Wraps a <code>GenericScatterData</code> object</li>
+<li>Validates observable names before use</li>
+<li>Raises <code>ObservableNotComputableError</code> if a requested observable cannot be obtained</li>
+</ul>
+<h3 id="data.data_processors.scatter_data_processor.ScatterDataProcessor--usage-notes">Usage Notes</h3>
+<p>This processor is intended for simple scatter-type datasets where only raw
+observables (e.g., <em>independent</em>, <em>dependent</em>, <em>label</em>, <em>datetime</em>) are
+required. Derived or computed observables should be implemented in dedicated
+processor subclasses.</p>
+
+
+
+
+
+
+
+              <details class="quote">
+                <summary>Source code in <code>data\data_processors\scatter_data_processor.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">ScatterDataProcessor</span><span class="p">(</span><span class="n">DataProcessorCore</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    ScatterDataProcessor</span>
+<span class="sd">    ====================</span>
+
+<span class="sd">    A lightweight processor for `GenericScatterData` objects. This class extends</span>
+<span class="sd">    `DataProcessorCore` and provides basic validation of requested observables.</span>
+<span class="sd">    For more complex data this class would implement some validation or computation</span>
+<span class="sd">    of derived observables.</span>
+
+<span class="sd">    Overview</span>
+<span class="sd">    --------</span>
+<span class="sd">    `ScatterDataProcessor` delegates observable access and unit retrieval to the</span>
+<span class="sd">    underlying `GenericScatterData` instance. It does not compute additional</span>
+<span class="sd">    derived quantities as it is not needed; it simply ensures that requested</span>
+<span class="sd">    observables can be retrieved.</span>
+
+<span class="sd">    - Wraps a `GenericScatterData` object</span>
+<span class="sd">    - Validates observable names before use</span>
+<span class="sd">    - Raises `ObservableNotComputableError` if a requested observable cannot be obtained</span>
+
+<span class="sd">    Usage Notes</span>
+<span class="sd">    -----------</span>
+<span class="sd">    This processor is intended for simple scatter-type datasets where only raw</span>
+<span class="sd">    observables (e.g., *independent*, *dependent*, *label*, *datetime*) are</span>
+<span class="sd">    required. Derived or computed observables should be implemented in dedicated</span>
+<span class="sd">    processor subclasses.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">scatter_data</span><span class="p">:</span> <span class="n">GenericScatterData</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">scatter_data</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">validate_observables</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
+        <span class="c1"># Checks whether all desired observables can be obtained for this data</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">observable</span> <span class="ow">in</span> <span class="n">args</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">get_data</span><span class="p">(</span><span class="n">observable</span><span class="p">)</span>
+        <span class="c1"># FIXME: Catchall try-except</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">ObservableNotComputableError</span>
+</code></pre></div></td></tr></table></div>
+              </details>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+
+</div>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/Allyson-Robert/X-LAB_Plotting_Manager_Implementations" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../..";</script>
+    <script src="../../../js/theme_extra.js"></script>
+    <script src="../../../js/theme.js"></script>
+      <script src="../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

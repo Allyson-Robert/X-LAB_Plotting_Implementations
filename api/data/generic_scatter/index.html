@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>Generic Scatter Datatype - X-LAB Plotting Implementation</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../../assets/_mkdocstrings.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Generic Scatter Datatype";
+        var mkdocs_page_input_path = "api\\data\\generic_scatter.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> X-LAB Plotting Implementation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Guide</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../what-this-example-provides/">What this example provides</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../concepts-and-architecture/">Concepts & architecture</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../using-and-extending/">Using & extending</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">X-LAB Plotting Implementation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Generic Scatter Datatype</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/Allyson-Robert/X-LAB_Plotting_Manager_Implementations/edit/master/docs/api/data/generic_scatter.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="generic-scatter-datatype">Generic Scatter Datatype</h1>
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<a id="data.data_types.generic_scatter.GenericScatterData"></a>
+    <div class="doc doc-contents first">
+            <p class="doc doc-class-bases">
+              Bases: <code><span title="contracts.data_types.DataCore">DataCore</span></code></p>
+
+
+
+        <h2 id="data.data_types.generic_scatter.GenericScatterData--genericscatterdata">GenericScatterData</h2>
+<p>A lightweight data container class for simple two-column scatter-type datasets.
+This class derives from <code>DataCore</code> and provides a minimal implementation for
+reading CSV or Excel files containing paired <em>independent</em> (x) and <em>dependent</em>
+(y) variables.</p>
+<h3 id="data.data_types.generic_scatter.GenericScatterData--overview">Overview</h3>
+<p><code>GenericScatterData</code> is intended for plotters or processors that work with
+generic x–y data without prescribing specific physical quantities. The class:</p>
+<ul>
+<li>Stores all raw observable data</li>
+<li>Exposes four possible observables:<ul>
+<li><code>label</code>: A string passed during construction.</li>
+<li><code>independent</code>: X-axis data (units: "Independent var (a.u.)").</li>
+<li><code>dependent</code>: Y-axis data (units: "Dependent var (a.u.)").</li>
+<li><code>datetime</code>: Extracted from the filename</li>
+</ul>
+</li>
+</ul>
+<h3 id="data.data_types.generic_scatter.GenericScatterData--attributes">Attributes</h3>
+<p>label_format : str
+    Datetime formatting string used for timestamp extraction from filenames.</p>
+
+
+<details class="dt_pattern-" open>
+  <summary>str</summary>
+  <p>Regular expression pattern for detecting the encoded timestamp in filenames.</p>
+</details>
+
+<details class="_allowed_observables-" open>
+  <summary>KeysView</summary>
+  <p>Set internally based on <code>raw_data</code> keys. Used by :meth:<code>DataCore.get_data</code>.</p>
+</details>        <h3 id="data.data_types.generic_scatter.GenericScatterData--usage-notes">Usage Notes</h3>
+<p>This class is commonly paired with :class:<code>DataProcessor</code> subclasses and may be
+used by scatter-based plotters. It is intentionally generic: units and semantic
+meaning of variables are left to the user or to processing layers.</p>
+
+
+
+
+
+
+
+              <details class="quote">
+                <summary>Source code in <code>data\data_types\generic_scatter.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">GenericScatterData</span><span class="p">(</span><span class="n">DataCore</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    GenericScatterData</span>
+<span class="sd">    ==================</span>
+
+<span class="sd">    A lightweight data container class for simple two-column scatter-type datasets.</span>
+<span class="sd">    This class derives from `DataCore` and provides a minimal implementation for</span>
+<span class="sd">    reading CSV or Excel files containing paired *independent* (x) and *dependent*</span>
+<span class="sd">    (y) variables.</span>
+
+<span class="sd">    Overview</span>
+<span class="sd">    --------</span>
+<span class="sd">    `GenericScatterData` is intended for plotters or processors that work with</span>
+<span class="sd">    generic x–y data without prescribing specific physical quantities. The class:</span>
+
+<span class="sd">    - Stores all raw observable data</span>
+<span class="sd">    - Exposes four possible observables:</span>
+<span class="sd">        - ``label``: A string passed during construction.</span>
+<span class="sd">        - ``independent``: X-axis data (units: &quot;Independent var (a.u.)&quot;).</span>
+<span class="sd">        - ``dependent``: Y-axis data (units: &quot;Dependent var (a.u.)&quot;).</span>
+<span class="sd">        - ``datetime``: Extracted from the filename</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    label_format : str</span>
+<span class="sd">        Datetime formatting string used for timestamp extraction from filenames.</span>
+
+<span class="sd">    dt_pattern : str</span>
+<span class="sd">        Regular expression pattern for detecting the encoded timestamp in filenames.</span>
+
+<span class="sd">    _allowed_observables : KeysView</span>
+<span class="sd">        Set internally based on ``raw_data`` keys. Used by :meth:`DataCore.get_data`.</span>
+
+<span class="sd">    Usage Notes</span>
+<span class="sd">    -----------</span>
+<span class="sd">    This class is commonly paired with :class:`DataProcessor` subclasses and may be</span>
+<span class="sd">    used by scatter-based plotters. It is intentionally generic: units and semantic</span>
+<span class="sd">    meaning of variables are left to the user or to processing layers.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">file_reader</span><span class="o">=</span><span class="n">read_csv</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">raw_data</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;label&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;units&quot;</span><span class="p">:</span> <span class="s2">&quot;N/A&quot;</span><span class="p">,</span> <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="n">label</span><span class="p">},</span>
+            <span class="s2">&quot;independent&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+            <span class="s2">&quot;dependent&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+            <span class="s2">&quot;datetime&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="p">}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_allowed_observables</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">raw_data</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">label_format</span> <span class="o">=</span> <span class="s2">&quot;%Y_%m_</span><span class="si">%d</span><span class="s2">_%H_%M_%S&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dt_pattern</span> <span class="o">=</span> <span class="s1">&#39;\d</span><span class="si">{4}</span><span class="s1">_\d</span><span class="si">{2}</span><span class="s1">_\d</span><span class="si">{2}</span><span class="s1">_\d</span><span class="si">{2}</span><span class="s1">_\d</span><span class="si">{2}</span><span class="s1">_\d</span><span class="si">{2}</span><span class="s1">&#39;</span>
+
+    <span class="nd">@with_logging</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">read_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filepath</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">file_reader</span><span class="p">(</span><span class="n">filepath</span><span class="p">)</span>
+        <span class="c1"># Assume first two columns are independent and dependent variables</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">raw_data</span><span class="p">[</span><span class="s1">&#39;independent&#39;</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">raw_data</span><span class="p">[</span><span class="s1">&#39;independent&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;units&quot;</span><span class="p">:</span> <span class="s2">&quot;Independent var (a.u.)&quot;</span><span class="p">,</span> <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;0&#39;</span><span class="p">]}</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">raw_data</span><span class="p">[</span><span class="s1">&#39;dependent&#39;</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">raw_data</span><span class="p">[</span><span class="s1">&#39;dependent&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;units&quot;</span><span class="p">:</span> <span class="s2">&quot;Dependent var (a.u.)&quot;</span><span class="p">,</span> <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;1&#39;</span><span class="p">]}</span>
+</code></pre></div></td></tr></table></div>
+              </details>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+
+</div>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/Allyson-Robert/X-LAB_Plotting_Manager_Implementations" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../..";</script>
+    <script src="../../../js/theme_extra.js"></script>
+    <script src="../../../js/theme.js"></script>
+      <script src="../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

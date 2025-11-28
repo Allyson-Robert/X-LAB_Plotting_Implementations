@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>Generic Worker - X-LAB Plotting Implementation</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../../assets/_mkdocstrings.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Generic Worker";
+        var mkdocs_page_input_path = "api\\devices\\generic_worker.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> X-LAB Plotting Implementation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Guide</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../what-this-example-provides/">What this example provides</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../concepts-and-architecture/">Concepts & architecture</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../using-and-extending/">Using & extending</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">X-LAB Plotting Implementation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Generic Worker</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/Allyson-Robert/X-LAB_Plotting_Manager_Implementations/edit/master/docs/api/devices/generic_worker.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="generic-worker">Generic Worker</h1>
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<a id="devices.workers.generic.Generic"></a>
+    <div class="doc doc-contents first">
+            <p class="doc doc-class-bases">
+              Bases: <code><span title="contracts.device_worker.DeviceWorkerCore">DeviceWorkerCore</span></code></p>
+
+
+
+        <h2 id="devices.workers.generic.Generic--generic">Generic</h2>
+<p>Device worker for generic scatter-type datasets. This class extends
+<code>DeviceWorkerCore</code> and wires together the data type, processor, and
+plotters for simple scatter and histogram visualisations.</p>
+<h3 id="devices.workers.generic.Generic--overview">Overview</h3>
+<p><code>Generic</code> configures the worker to use:</p>
+<ul>
+<li><code>GenericScatterData</code> as the underlying data container</li>
+<li><code>ScatterDataProcessor</code> to access and validate observables</li>
+<li><code>ScatterDataPlotter</code> for x–y scatter plots</li>
+<li><code>HistogramPlotter</code> for value distributions</li>
+</ul>
+<p>It uses a <code>PlotterOptions</code> instance to control plot appearance, axis
+titles, and legend labels.</p>
+<h3 id="devices.workers.generic.Generic--usage-notes">Usage Notes</h3>
+<p>Use <code>plot</code> to generate a standard scatter plot of the <em>independent</em>
+versus <em>dependent</em> observable, and <code>plot_distribution</code> to generate
+a histogram of the <em>dependent</em> observable across all loaded datasets.</p>
+
+
+
+
+
+
+
+              <details class="quote">
+                <summary>Source code in <code>devices\workers\generic.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@decorate_class_with_logging</span><span class="p">(</span><span class="n">log_level</span><span class="o">=</span><span class="n">DEBUG_WORKER</span><span class="p">)</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Generic</span><span class="p">(</span><span class="n">DeviceWorkerCore</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Generic</span>
+<span class="sd">    =======</span>
+
+<span class="sd">    Device worker for generic scatter-type datasets. This class extends</span>
+<span class="sd">    `DeviceWorkerCore` and wires together the data type, processor, and</span>
+<span class="sd">    plotters for simple scatter and histogram visualisations.</span>
+
+<span class="sd">    Overview</span>
+<span class="sd">    --------</span>
+<span class="sd">    `Generic` configures the worker to use:</span>
+
+<span class="sd">    - `GenericScatterData` as the underlying data container</span>
+<span class="sd">    - `ScatterDataProcessor` to access and validate observables</span>
+<span class="sd">    - `ScatterDataPlotter` for x–y scatter plots</span>
+<span class="sd">    - `HistogramPlotter` for value distributions</span>
+
+<span class="sd">    It uses a `PlotterOptions` instance to control plot appearance, axis</span>
+<span class="sd">    titles, and legend labels.</span>
+
+<span class="sd">    Usage Notes</span>
+<span class="sd">    -----------</span>
+<span class="sd">    Use `plot` to generate a standard scatter plot of the *independent*</span>
+<span class="sd">    versus *dependent* observable, and `plot_distribution` to generate</span>
+<span class="sd">    a histogram of the *dependent* observable across all loaded datasets.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">device</span><span class="p">,</span> <span class="n">dataset</span><span class="p">,</span> <span class="n">plot_type</span><span class="p">,</span> <span class="n">options</span><span class="p">:</span> <span class="n">PlotterOptions</span><span class="p">):</span>
+        <span class="c1"># super() delegates method calls to a parent</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">device</span><span class="p">,</span> <span class="n">dataset</span><span class="p">,</span> <span class="n">plot_type</span><span class="p">,</span> <span class="n">options</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">x_title</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y_title</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">legend_title</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">options</span> <span class="o">=</span> <span class="n">options</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data_processors</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_data_type</span><span class="p">(</span><span class="n">GenericScatterData</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_processor_type</span><span class="p">(</span><span class="n">ScatterDataProcessor</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">plot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">title</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Show the scatter plot</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">plotter</span> <span class="o">=</span> <span class="n">ScatterDataPlotter</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="s2">&quot;independent&quot;</span><span class="p">,</span> <span class="s2">&quot;dependent&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">)</span>
+        <span class="n">plotter</span><span class="o">.</span><span class="n">ready_plot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data_processors</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">)</span>
+        <span class="n">plotter</span><span class="o">.</span><span class="n">set_axes_titles</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get_option</span><span class="p">(</span><span class="s2">&quot;x_title&quot;</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get_option</span><span class="p">(</span><span class="s2">&quot;y_title&quot;</span><span class="p">))</span>
+        <span class="n">plotter</span><span class="o">.</span><span class="n">draw_plot</span><span class="p">()</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">plot_distribution</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">title</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Show a histogram</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">plotter</span> <span class="o">=</span> <span class="n">HistogramPlotter</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="s2">&quot;dependent&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">)</span>
+        <span class="n">plotter</span><span class="o">.</span><span class="n">ready_plot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data_processors</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">)</span>
+        <span class="n">plotter</span><span class="o">.</span><span class="n">set_axes_titles</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get_option</span><span class="p">(</span><span class="s2">&quot;y_title&quot;</span><span class="p">))</span>
+        <span class="n">plotter</span><span class="o">.</span><span class="n">draw_plot</span><span class="p">()</span>
+</code></pre></div></td></tr></table></div>
+              </details>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="devices.workers.generic.Generic.plot" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">plot</span><span class="p">(</span><span class="n">title</span><span class="p">)</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Show the scatter plot</p>
+
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>devices\workers\generic.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">plot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">title</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Show the scatter plot</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">plotter</span> <span class="o">=</span> <span class="n">ScatterDataPlotter</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="s2">&quot;independent&quot;</span><span class="p">,</span> <span class="s2">&quot;dependent&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">)</span>
+    <span class="n">plotter</span><span class="o">.</span><span class="n">ready_plot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data_processors</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">)</span>
+    <span class="n">plotter</span><span class="o">.</span><span class="n">set_axes_titles</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get_option</span><span class="p">(</span><span class="s2">&quot;x_title&quot;</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get_option</span><span class="p">(</span><span class="s2">&quot;y_title&quot;</span><span class="p">))</span>
+    <span class="n">plotter</span><span class="o">.</span><span class="n">draw_plot</span><span class="p">()</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="devices.workers.generic.Generic.plot_distribution" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">plot_distribution</span><span class="p">(</span><span class="n">title</span><span class="p">)</span></code>
+
+</h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Show a histogram</p>
+
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>devices\workers\generic.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">plot_distribution</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">title</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Show a histogram</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">plotter</span> <span class="o">=</span> <span class="n">HistogramPlotter</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="s2">&quot;dependent&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">)</span>
+    <span class="n">plotter</span><span class="o">.</span><span class="n">ready_plot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data_processors</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">)</span>
+    <span class="n">plotter</span><span class="o">.</span><span class="n">set_axes_titles</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get_option</span><span class="p">(</span><span class="s2">&quot;y_title&quot;</span><span class="p">))</span>
+    <span class="n">plotter</span><span class="o">.</span><span class="n">draw_plot</span><span class="p">()</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+
+</div>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/Allyson-Robert/X-LAB_Plotting_Manager_Implementations" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../..";</script>
+    <script src="../../../js/theme_extra.js"></script>
+    <script src="../../../js/theme.js"></script>
+      <script src="../../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
