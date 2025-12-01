@@ -42,7 +42,6 @@ class Generic(DeviceWorkerCore):
         self.x_title = None
         self.y_title = None
         self.legend_title = None
-        self.options = options
         self.data_processors = None
 
         self.set_data_type(GenericScatterData)
