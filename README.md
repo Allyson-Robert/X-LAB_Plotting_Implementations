@@ -12,7 +12,7 @@ It serves as a **reference template** demonstrating how to implement custom:
 - Device workers  
 
 All components comply with the X-LAB contracts and integrate cleanly with the main GUI.
-For the main repository containing the GUI, visit the [X-LAB Plotting Manager Repository](https://github.com/Allyson-Robert/X-LAB_Plotting_Manager) or the corresponding documentation on the [X-LAB Plotting Manager GitHub Pages](https://Allyson-Robert.github.io/X-LAB_Plotting_Manager_implementations/).
+For the main repository containing the GUI, visit the [X-LAB Plotting Manager Repository](https://github.com/Allyson-Robert/X-LAB_Plotting_Manager) or the corresponding documentation on the [X-LAB Plotting Manager GitHub Pages](https://Allyson-Robert.github.io/X-LAB_Plotting_Manager/).
 
 ---
 
