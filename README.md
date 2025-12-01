@@ -20,14 +20,19 @@ For the main repository containing the GUI, visit the [X-LAB Plotting Manager Re
 
 > 🔗 **Important:** This repository is meant to live inside the `implementations/` folder of the main **X-LAB Plotting Manager** project.
 
-1. Clone the main GUI repository (if you haven’t already):
+1. Clone and prepare the main GUI repository (if you haven’t already):
 
    ```bash
    git clone https://github.com/Allyson-Robert/X-LAB_Plotting_Manager.git
    cd X-LAB_Plotting_Manager
+
+   python -m venv .venv
+   source .venv/bin/activate       # Windows: .venv\Scripts\activate
+   
+   pip install -r requirements-312.txt
    ```
 
-2. Clone this example into the `implementations/` folder:
+2. Clone this example into an `implementations/` folder:
 
    ```bash
    git clone https://github.com/Allyson-Robert/X-LAB_Plotting_Manager_Implementations.git implementations/
