@@ -1,159 +1,77 @@
-# X-LAB Plotting Example Implementations
- 
+# X-LAB Plotting Manager
+
 ![Python](https://img.shields.io/badge/python-3.10%2B-blue)
-![Status](https://img.shields.io/badge/example-implementation-success)
+![Platform](https://img.shields.io/badge/platform-Linux%20%7C%20Windows-lightgrey)
+![Licence](https://img.shields.io/badge/license-AGPL--3.0-blue)
+![Status](https://img.shields.io/badge/status-active-success)
 
-This repository provides a **minimal, fully functional implementation package** for the **X-LAB Plotting Manager**.  
-It serves as a **reference template** demonstrating how to implement custom:
+The **X-LAB Plotting Manager** is a desktop application for organising scientific datasets and producing publication‑ready plots using clean, reusable modules.
 
-- Data types  
-- Data processors  
-- Plotters  
-- Device workers  
-
-All components comply with the X-LAB contracts and integrate cleanly with the main GUI.
-For the main repository containing the GUI, visit the [X-LAB Plotting Manager Repository](https://github.com/Allyson-Robert/X-LAB_Plotting_Manager) or the corresponding documentation on the [X-LAB Plotting Manager GitHub Pages](https://Allyson-Robert.github.io/X-LAB_Plotting_Manager/).
-
+![MainWindow](docs/images/MainWindow.png)
 ---
 
-## 📦 Installation
+## 🚀 Quick Start
 
-> 🔗 **Important:** This repository is meant to live inside the `implementations/` folder of the main **X-LAB Plotting Manager** project.
-
-1. Clone and prepare the main GUI repository (if you haven’t already):
-
+1. **Install Python 3.10+**  
+2. **Clone this repository:**  
    ```bash
    git clone https://github.com/Allyson-Robert/X-LAB_Plotting_Manager.git
+   ```
+3. **Create a virtual environment & install dependencies:**  
+   ```bash
    cd X-LAB_Plotting_Manager
-
    python -m venv .venv
    source .venv/bin/activate       # Windows: .venv\Scripts\activate
-   
    pip install -r requirements-312.txt
    ```
-
-2. Clone this example into an `implementations/` folder:
-
+4. **Add an implementation package** (required for the GUI to run):  
    ```bash
    git clone https://github.com/Allyson-Robert/X-LAB_Plotting_Manager_Implementations.git implementations/
-   ```
-
-3. (Recommended) Activate the same virtual environment you use for the main GUI, then install the implementation dependencies, for example:
-
-   ```bash
-   # inside the X-LAB_Plotting_Manager root
-   source .venv/bin/activate        # Windows: .venv\Scripts\activate
    pip install -r implementations/requirements-312.txt
    ```
+   A short introduction to implementations and how to write your own is available in the [documentation](https://allyson-robert.github.io/X-LAB_Plotting_Manager/).
 
-Once this repository is present under `implementations/` and its dependencies are installed,  
-the X-LAB GUI will detect and use these example implementations automatically.
 
+5. **Launch the application:**  
+   ```bash
+   python -m gui.windows.MainWindow
+   ```
 ---
 
-## ✨ What This Example Provides
+## 📁 Creating a Dataset
 
-### 📁 1. Minimal Data Type  
-**`GenericScatterData`**
+Use **File → Create Set** in the menu bar to define a dataset from your raw files and metadata.
 
-A simple two-column (`x`, `y`) data container supporting CSV and Excel input.  
-Use it as a model for creating your own loadable data types based on the `DataCore` contract.
+![DataCreationWindow](docs/images/DataCreationWindow.png)
 
----
-
-### ⚙️ 2. Example Data Processor  
-A lightweight processor showcasing:
-
-- How to declare derived observables  
-- On-demand computation using `DataProcessorCore`  
-- Correct integration with the X-LAB pipeline  
-
-This is a minimal but correct example of a processor implementation.
-
----
-
-### 📊 3. Plotter Implementations  
-
-A small set of Plotly-based plotters demonstrating:
-
-- Usage of the core `Plotter` interface  
-- Accessing processed data  
-- Exposing adjustable configuration through `PlotterOptions`  
-
-These templates can be extended into more advanced visualizations.
-
----
-
-### 🔧 4. Device Worker  
-
-**`GenericDeviceWorker`** coordinates:
-
-- The data class  
-- The processor  
-- The plotters  
-
-This class shows how the X-LAB GUI locates and interacts with device-specific workers.  
-Your own implementation package should provide at least one worker class like this.
-
----
-
-## 🧩 Architecture Overview
-
-This example follows the same structure all X-LAB implementation packages use:
-
-![X-LAB Implementation Structure](docs/Contracts.png)
-
-Your own implementation can follow the same pattern—simply place it in an `implementations/` folder inside the main X-LAB GUI project.
+Full details on datasets and the workflow are explained in the documentation.
 
 ---
 
 ## 📚 Documentation
 
-Full documentation is included in the `docs/` directory:
+Full documentation:  
+**https://allyson-robert.github.io/X-LAB_Plotting_Manager/**
 
-- Overview: [docs/index.md](docs/index.md)  
-- Concepts & Architecture: [docs/concepts-and-architecture.md](docs/concepts-and-architecture.md)  
-- Using & Extending: [docs/using-and-extending.md](docs/using-and-extending.md)  
-- Explanation of this example: [docs/what-this-example-provides.md](docs/what-this-example-provides.md)
+The docs cover:
 
-### View pre-built documentation locally
-
-```bash
-python -m http.server -d site 8000
-```
-
-Then open: <http://localhost:8000>
+- installation  
+- implementations  
+- creating datasets  
+- generating plots  
+- troubleshooting  
 
 ---
 
-## 🚀 Purpose
+## 📄 License
 
-This repository provides a **clean starting point** for developing:
-
-- New device integrations  
-- Custom data readers  
-- Custom processors  
-- Custom plotters  
-
-Feel free to adapt, expand, and repurpose this example as the foundation of your own implementation module.
+This project is built using PyQt5 and licensed under the **AGPL**. 
+See the included `LICENSE` file for full terms.
 
 ---
 
-## 🤝 Contributing
+## Known Issues
 
-Contributions that:
+A PyQt5 deprecation warning may appear under Python 3.10. 
+It is harmless and can be ignored.
 
-- Improve clarity  
-- Add new example implementations  
-- Expand documentation  
-
-are very welcome!
-
-### To contribute:
-
-1. Fork this repository  
-2. Create a feature branch  
-3. Add your changes  
-4. Submit a pull request  
-
-Please follow the X-LAB contract architecture and file structure to ensure compatibility.
