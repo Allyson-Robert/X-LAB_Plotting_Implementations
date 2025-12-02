@@ -2,54 +2,54 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://allyson-robert.github.io/X-LAB_Plotting_Implementations/</loc>
-         <lastmod>2025-11-28</lastmod>
+         <lastmod>2025-12-02</lastmod>
     </url>
     <url>
          <loc>https://allyson-robert.github.io/X-LAB_Plotting_Implementations/concepts-and-architecture/</loc>
-         <lastmod>2025-11-28</lastmod>
+         <lastmod>2025-12-02</lastmod>
     </url>
     <url>
          <loc>https://allyson-robert.github.io/X-LAB_Plotting_Implementations/using-and-extending/</loc>
-         <lastmod>2025-11-28</lastmod>
+         <lastmod>2025-12-02</lastmod>
     </url>
     <url>
          <loc>https://allyson-robert.github.io/X-LAB_Plotting_Implementations/what-this-example-provides/</loc>
-         <lastmod>2025-11-28</lastmod>
+         <lastmod>2025-12-02</lastmod>
     </url>
     <url>
          <loc>https://allyson-robert.github.io/X-LAB_Plotting_Implementations/api/data/generic_scatter/</loc>
-         <lastmod>2025-11-28</lastmod>
+         <lastmod>2025-12-02</lastmod>
     </url>
     <url>
          <loc>https://allyson-robert.github.io/X-LAB_Plotting_Implementations/api/data/scatter_data_processor/</loc>
-         <lastmod>2025-11-28</lastmod>
+         <lastmod>2025-12-02</lastmod>
     </url>
     <url>
          <loc>https://allyson-robert.github.io/X-LAB_Plotting_Implementations/api/devices/generic_worker/</loc>
-         <lastmod>2025-11-28</lastmod>
+         <lastmod>2025-12-02</lastmod>
     </url>
     <url>
          <loc>https://allyson-robert.github.io/X-LAB_Plotting_Implementations/api/plotters/histogram_plotter/</loc>
-         <lastmod>2025-11-28</lastmod>
+         <lastmod>2025-12-02</lastmod>
     </url>
     <url>
          <loc>https://allyson-robert.github.io/X-LAB_Plotting_Implementations/api/plotters/scatter_data_plotter/</loc>
-         <lastmod>2025-11-28</lastmod>
+         <lastmod>2025-12-02</lastmod>
     </url>
     <url>
          <loc>https://allyson-robert.github.io/X-LAB_Plotting_Implementations/api/utils/export_to_svg/</loc>
-         <lastmod>2025-11-28</lastmod>
+         <lastmod>2025-12-02</lastmod>
     </url>
     <url>
          <loc>https://allyson-robert.github.io/X-LAB_Plotting_Implementations/api/utils/get_colour/</loc>
-         <lastmod>2025-11-28</lastmod>
+         <lastmod>2025-12-02</lastmod>
     </url>
     <url>
          <loc>https://allyson-robert.github.io/X-LAB_Plotting_Implementations/api/utils/read_table_csv/</loc>
-         <lastmod>2025-11-28</lastmod>
+         <lastmod>2025-12-02</lastmod>
     </url>
     <url>
          <loc>https://allyson-robert.github.io/X-LAB_Plotting_Implementations/api/utils/scatter_prep/</loc>
-         <lastmod>2025-11-28</lastmod>
+         <lastmod>2025-12-02</lastmod>
     </url>
 </urlset>
