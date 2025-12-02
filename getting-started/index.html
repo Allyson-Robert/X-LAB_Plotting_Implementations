@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://allyson-robert.github.io/X-LAB_Plotting_Implementations/getting-started/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Getting started - X-LAB Plotting Implementation</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../assets/_mkdocstrings.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Getting started";
+        var mkdocs_page_input_path = "getting-started.md";
+        var mkdocs_page_url = "/X-LAB_Plotting_Implementations/getting-started/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> X-LAB Plotting Implementation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Guide</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Getting started</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#1-prerequisites">1. Prerequisites</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#2-launch-the-gui">2. Launch the GUI</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#3-load-data">3. Load data</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#4-select-a-plot">4. Select a plot</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#5-create-your-first-plot">5. Create your first plot</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#6-what-just-happened">6. What just happened?</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../concepts-and-contracts/">Core concepts & contracts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../example-walkthrough/">Example walkthrough</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../implementing-your-own/">Implementing your own module</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">API Reference</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" >data</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../api/data/generic_scatter/">generic scatter data</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../api/data/scatter_data_processor/">scatter data processor</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >devices</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../api/devices/generic_worker/">generic worker</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >plotters</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../api/plotters/histogram_plotter/">histogram plotter</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../api/plotters/scatter_data_plotter/">scatter data plotter</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" >utils</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../api/utils/get_colour/">get_colour</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../api/utils/export_to_svg/">export_to_svg</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../api/utils/scatter_prep/">scatter_prep</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../api/utils/read_table_csv/">read_table_csv</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">X-LAB Plotting Implementation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Guide</li>
+      <li class="breadcrumb-item active">Getting started</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/Allyson-Robert/X-LAB_Plotting_Implementations/edit/master/docs/getting-started.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="getting-started-with-this-implementation">Getting Started with this Implementation</h1>
+<p>This page shows how to run the X‑LAB Plotting Manager using this example 
+implementation, and produce your first plot.</p>
+<p>For GUI documentation, see:<br />
+→ <a href="https://allyson-robert.github.io/X-LAB_Plotting_Manager/">https://allyson-robert.github.io/X-LAB_Plotting_Manager/</a></p>
+<hr />
+<h2 id="1-prerequisites">1. Prerequisites</h2>
+<p>You must already have:</p>
+<ul>
+<li>Python 3.10+</li>
+<li>The main <strong>X‑LAB Plotting Manager</strong> cloned and installed</li>
+<li>This implementation repo cloned into <code>implementations/</code></li>
+</ul>
+<p>Directory layout:</p>
+<pre><code>X-LAB_Plotting_Manager/
+    gui/
+    implementations/  ← this repo
+</code></pre>
+<p>This repository has additional dependencies that must be taken care of.</p>
+<pre><code class="language-bash">pip install -r implementations/requirements-312.txt
+</code></pre>
+<hr />
+<h2 id="2-launch-the-gui">2. Launch the GUI</h2>
+<p>Run:</p>
+<pre><code>python -m gui.windows.MainWindow
+</code></pre>
+<p>On startup, the GUI loads the available implementation modules. </p>
+<hr />
+<h2 id="3-load-data">3. Load data</h2>
+<ol>
+<li>Click <strong>“New Dataset”</strong></li>
+<li>Choose <strong>Files → Add Files</strong></li>
+<li>Load any CSV or Excel file containing at least two numerical columns</li>
+</ol>
+<p>The <code>GenericScatterData</code> reader automatically:</p>
+<ul>
+<li>Detects CSV delimiters</li>
+<li>Reads header names</li>
+<li>Exposes each column as an observable</li>
+</ul>
+<hr />
+<h2 id="4-select-a-plot">4. Select a plot</h2>
+<p>The GUI automatically lists all plotters compatible with the loaded dataset.
+For this module you will see:</p>
+<ul>
+<li><strong>plot</strong></li>
+<li><strong>plot_distribution</strong></li>
+</ul>
+<hr />
+<h2 id="5-create-your-first-plot">5. Create your first plot</h2>
+<ol>
+<li>Select <em>plot</em> from dropdown</li>
+<li>Add axis titles</li>
+<li>Optionally interact with other options</li>
+<li>Click <strong>Plot</strong></li>
+</ol>
+<p>You should now see your first working plot.</p>
+<hr />
+<h2 id="6-what-just-happened">6. What just happened?</h2>
+<ul>
+<li><code>GenericScatterData</code> read your file</li>
+<li><code>ScatterDataProcessor</code> validated observables</li>
+<li>The selected <code>Plotter</code> prepared the graphics</li>
+<li>The GUI rendered the result using Matplotlib</li>
+</ul>
+<p>To understand these components, continue to<br />
+<strong>Core Concepts &amp; Contracts</strong>.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href=".." class="btn btn-neutral float-left" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../concepts-and-contracts/" class="btn btn-neutral float-right" title="Core concepts & contracts">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/Allyson-Robert/X-LAB_Plotting_Implementations" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href=".." style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../concepts-and-contracts/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
